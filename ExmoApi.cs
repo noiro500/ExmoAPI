@@ -20,6 +20,8 @@ namespace ExmoAPI
         private string _secret; 
         private string _url = "http://api.exmo.com/v1/{0}";
 
+        private string _urlPublicAPI = "http://api.exmo.com/v1/{0}/?pair={1}";
+
         static ExmoApi()
         {
             _nounce = Helpers.GetTimestamp();
@@ -44,9 +46,22 @@ namespace ExmoAPI
                 var content = new FormUrlEncodedContent(req);
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
-
                 var response = await client.PostAsync(string.Format(_url, apiName), content);
 
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        public async Task<string> PubApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples)
+        {
+            using (var client =new HttpClient())
+            {
+                var n = Interlocked.Increment(ref _nounce);
+                req.Add("nonce", Convert.ToString((n)));
+                var message = ToQueryString(req);
+                var content=new FormUrlEncodedContent(req);
+                string temp = string.Format(_urlPublicAPI, apiName, tradeCouples);
+                var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
                 return await response.Content.ReadAsStringAsync();
             }
         }
@@ -89,7 +104,7 @@ namespace ExmoAPI
                 wb.Headers.Add("Key", _key);
 
                 var data = req.ToNameValueCollection();
-                
+
                 var response = wb.UploadValues(string.Format(_url, apiName), "POST", data);
                 return Encoding.UTF8.GetString(response);
             }

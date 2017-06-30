@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.Threading;
 using Newtonsoft.Json;
 namespace ExmoAPI
 {
@@ -29,19 +31,26 @@ namespace ExmoAPI
 
             var task2 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
             StringBuilder str2 = new StringBuilder(task2.Result.ToString());
+            CUserOpenOrders userOpenOrders = JsonConvert.DeserializeObject<CUserOpenOrders>(str2.ToString());
 
-            Console.ReadLine();
+            var task3 = api.PubApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD,ETH_RUB");
 
+            Console.WriteLine(task3.Result.ToString());
             
-
-            Task.Factory.StartNew(async () =>
-            {
-                var result3 = await api.ApiQueryAsync("user_cancelled_orders", new Dictionary<string, string> { { "limit", "2" }, { "offset", "0" } });
-                //Console.WriteLine("async result4");
-                //Console.WriteLine(result3);
-            });
-
             Console.ReadLine();
+
+            Console.WriteLine((task3.Result.ToString()).IndexOf("RUB"));
+
+           
+
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    var result3 = await api.ApiQueryAsync("user_cancelled_orders", new Dictionary<string, string> { { "limit", "2" }, { "offset", "0" } });
+            //    //Console.WriteLine("async result4");
+            //    //Console.WriteLine(result3);
+            //});
+
+            //Console.ReadLine();
         }
     }
 }
