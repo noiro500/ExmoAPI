@@ -22,9 +22,9 @@ namespace ExmoAPI
 
 
             //async query
+            //Запрос информация о пользователе
             var task = api.ApiQueryAsync("user_info", new Dictionary<string, string> ());
             StringBuilder str = new StringBuilder( task.Result.ToString());
-            
             CUserInfo userInfo = JsonConvert.DeserializeObject<CUserInfo>(str.ToString());
 
             var task2 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
