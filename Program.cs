@@ -26,20 +26,18 @@ namespace ExmoAPI
             //async query
             //Запрос информация о пользователе
             var task = api.ApiQueryAsync("user_info", new Dictionary<string, string> ());
-            StringBuilder str = new StringBuilder( task.Result.ToString());
-            CUserInfo userInfo = JsonConvert.DeserializeObject<CUserInfo>(str.ToString());
+            CUserInfo userInfo = JsonConvert.DeserializeObject<CUserInfo>(task.Result.ToString());
 
             var task2 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
-            StringBuilder str2 = new StringBuilder(task2.Result.ToString());
-            CUserOpenOrders userOpenOrders = JsonConvert.DeserializeObject<CUserOpenOrders>(str2.ToString());
+            CUserOpenOrders userOpenOrders = JsonConvert.DeserializeObject<CUserOpenOrders>(task2.Result.ToString());
 
-            var task3 = api.PubApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD,ETH_RUB");
-
-            Console.WriteLine(task3.Result.ToString());
             
-            Console.ReadLine();
+            var task3 = api.PubApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD");
+            PublicAPI.RootObject _BTCUSD = JsonConvert.DeserializeObject<PublicAPI.RootObject>(task3.Result.ToString());
+            
 
-            Console.WriteLine((task3.Result.ToString()).IndexOf("RUB"));
+            Console.ReadLine();
+            Console.WriteLine(task3.Result.ToString());
 
            
 

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PublicAPI.cs" />
     <Compile Include="TradCouples.cs" />
     <Compile Include="CUserInfo.cs" />
     <Compile Include="ExmoApi.cs" />

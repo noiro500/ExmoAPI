@@ -60,7 +60,6 @@ namespace ExmoAPI
                 req.Add("nonce", Convert.ToString((n)));
                 var message = ToQueryString(req);
                 var content=new FormUrlEncodedContent(req);
-                string temp = string.Format(_urlPublicAPI, apiName, tradeCouples);
                 var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
                 return await response.Content.ReadAsStringAsync();
             }
