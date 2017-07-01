@@ -17,8 +17,8 @@ namespace ExmoAPI
             public string bid_quantity { get; set; }
             public string bid_amount { get; set; }
             public string bid_top { get; set; }
-            //public List<List<int>> ask { get; set; }
-            //public List<List<int>> bid { get; set; }
+            public List<List<int>> ask { get; set; }
+            public List<List<int>> bid { get; set; }
         }
 
         public class RootObject
