@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PublicAPI.cs" />
     <Compile Include="TradCouples.cs" />
     <Compile Include="CUserInfo.cs" />
     <Compile Include="ExmoApi.cs" />
@@ -58,6 +57,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PublicAPI\PublicAPI.csproj">
+      <Project>{9c3ab169-80a4-42ba-82be-23815de815c7}</Project>
+      <Name>PublicAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

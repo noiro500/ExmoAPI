@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace ExmoAPI
+namespace PublicAPI
 {
-    static class PublicAPI
+    public static class PublicAPI
     {
-
         #region Список сделок по валютной паре BTC_USB
         public class CTradeBTCUSD
         {
