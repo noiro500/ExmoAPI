@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
 using System.Threading;
+using System.Data;
 using Newtonsoft.Json;
 namespace ExmoAPI
 {
@@ -31,15 +32,16 @@ namespace ExmoAPI
             var task2 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
             CUserOpenOrders userOpenOrders = JsonConvert.DeserializeObject<CUserOpenOrders>(task2.Result.ToString());
 
-            
-            var task3 = api.PubApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD");
-            PublicAPI.RootObject _BTCUSD = JsonConvert.DeserializeObject<PublicAPI.RootObject>(task3.Result.ToString());
-            
+           
+            var task3 = api.ApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD");
+            PublicAPI.CBtcUsdTradeResult trades_BTC_USD = JsonConvert.DeserializeObject<PublicAPI.CBtcUsdTradeResult>(task3.Result.ToString());
+            trades_BTC_USD.ShowPrice();
+
+            var task4 = api.ApiQueryAsync("order_book", new Dictionary<string, string>(), "BTC_USD");
+            PublicAPI.CBtcUsdOrderBookResult orderBook_BTC_USD = JsonConvert.DeserializeObject<PublicAPI.CBtcUsdOrderBookResult>(task4.Result.ToString());
 
             Console.ReadLine();
-            Console.WriteLine(task3.Result.ToString());
 
-           
 
             //Task.Factory.StartNew(async () =>
             //{

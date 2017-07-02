@@ -20,7 +20,7 @@ namespace ExmoAPI
         private string _secret; 
         private string _url = "http://api.exmo.com/v1/{0}";
 
-        private string _urlPublicAPI = "http://api.exmo.com/v1/{0}/?pair={1}";
+        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}";
 
         static ExmoApi()
         {
@@ -33,7 +33,7 @@ namespace ExmoAPI
             _secret = secret;
         }
 
-        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req)
+        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples=null)
         {
             using (var client = new HttpClient())
             {
@@ -46,24 +46,34 @@ namespace ExmoAPI
                 var content = new FormUrlEncodedContent(req);
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
-                var response = await client.PostAsync(string.Format(_url, apiName), content);
+                if (tradeCouples != null)
+                {
+                    string temp = string.Format(_urlPublicAPI, apiName, tradeCouples);
+                    var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    var response = await client.PostAsync(string.Format(_url, apiName), content);
+                    return await response.Content.ReadAsStringAsync();
+                }
 
-                return await response.Content.ReadAsStringAsync();
+                
             }
         }
 
-        public async Task<string> PubApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples)
-        {
-            using (var client =new HttpClient())
-            {
-                var n = Interlocked.Increment(ref _nounce);
-                req.Add("nonce", Convert.ToString((n)));
-                var message = ToQueryString(req);
-                //var content=new FormUrlEncodedContent(req);
-                var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
-                return await response.Content.ReadAsStringAsync();
-            }
-        }
+        //public async Task<string> PubApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples)
+        //{
+        //    using (var client =new HttpClient())
+        //    {
+        //        var n = Interlocked.Increment(ref _nounce);
+        //        req.Add("nonce", Convert.ToString((n)));
+        //        var message = ToQueryString(req);
+        //        //var content=new FormUrlEncodedContent(req);
+        //        var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
+        //        return await response.Content.ReadAsStringAsync();
+        //    }
+        //}
 
         public async Task<HttpStatusCode> ApiQueryAsyncEx(string apiName, IDictionary<string, string> req)
         {
