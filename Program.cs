@@ -23,7 +23,7 @@ namespace ExmoAPI
             var result2 = api.ApiQuery("user_cancelled_orders", new Dictionary<string, string> { { "limit", "100" }, { "offset", "0"} });
             Console.WriteLine("sync result2");
             Console.WriteLine(result2);*/
-
+            
 
             //async query
             //Запрос информация о пользователе

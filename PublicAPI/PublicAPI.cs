@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace PublicAPI
 {
-    public static class PublicAPI
+    public static class MethodsPublicAPI
     {
         #region Список сделок по валютной паре BTC_USB
         public class CTradeBTCUSD
