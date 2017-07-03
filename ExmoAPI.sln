@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExmoAPI", "ExmoAPI.csproj", "{A868170E-E9E0-4120-AF21-82341D07CD5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI", "..\PublicAPI\PublicAPI.csproj", "{C71F626F-0878-40E9-B310-4C4685766764}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI", "PublicAPI\PublicAPI.csproj", "{C71F626F-0878-40E9-B310-4C4685766764}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
