@@ -59,8 +59,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PublicAPI\PublicAPI.csproj">
-      <Project>{9c3ab169-80a4-42ba-82be-23815de815c7}</Project>
+    <ProjectReference Include="..\PublicAPI\PublicAPI.csproj">
+      <Project>{c71f626f-0878-40e9-b310-4c4685766764}</Project>
       <Name>PublicAPI</Name>
     </ProjectReference>
   </ItemGroup>

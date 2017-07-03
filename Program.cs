@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Data;
 using Newtonsoft.Json;
+using PublicAPI;
 
 namespace ExmoAPI
 {
@@ -35,11 +36,12 @@ namespace ExmoAPI
 
            
             var task3 = api.ApiQueryAsync("trades", new Dictionary<string, string>(), "BTC_USD");
-            PublicAPI.PublicAPI.CBtcUsdTradeResult trades_BTC_USD = JsonConvert.DeserializeObject<PublicAPI.PublicAPI.CBtcUsdTradeResult>(task3.Result.ToString());
+            CMethodPublicAPI.CBtcUsdTradeResult trades_BTC_USD = JsonConvert.DeserializeObject<CMethodPublicAPI.CBtcUsdTradeResult>(task3.Result.ToString());
             trades_BTC_USD.ShowPrice();
+            
 
             var task4 = api.ApiQueryAsync("order_book", new Dictionary<string, string>(), "BTC_USD");
-            PublicAPI.PublicAPI.CBtcUsdOrderBookResult orderBook_BTC_USD = JsonConvert.DeserializeObject<PublicAPI.PublicAPI.CBtcUsdOrderBookResult>(task4.Result.ToString());
+            CMethodPublicAPI.CBtcUsdOrderBookResult orderBook_BTC_USD = JsonConvert.DeserializeObject<CMethodPublicAPI.CBtcUsdOrderBookResult>(task4.Result.ToString());
             
             Console.ReadLine();
 
