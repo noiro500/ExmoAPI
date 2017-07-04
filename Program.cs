@@ -36,16 +36,24 @@ namespace ExmoAPI
 
             //Выбрать либо одну валютную пару, либо несколько (либо все)
             var task3 = api.ApiQueryAsync("trades", new Dictionary<string, string> (), "BTC_USD,BTC_EUR,BTC_RUB,BTC_UAH,DASH_BTC,DASH_USD,ETH_BTC,ETH_USD,DOGE_BTC,LTC_BTC,ETH_RUB,ETH_EUR,LTC_RUB,DASH_RUB,ETH_LTC,USD_RUB,WAVES_BTC");
-            CMethodPublicAPI.CTradesResult tradesResult = JsonConvert.DeserializeObject<CMethodPublicAPI.CTradesResult>(task3.Result.ToString());          
+            CPublicAPI.CTradesResult tradesResult = JsonConvert.DeserializeObject<CPublicAPI.CTradesResult>(task3.Result.ToString());          
 
             var task4 = api.ApiQueryAsync("order_book", new Dictionary<string, string>(), "BTC_USD,BTC_EUR,BTC_RUB,BTC_UAH,DASH_BTC,DASH_USD,ETH_BTC,ETH_USD,DOGE_BTC,LTC_BTC,ETH_RUB,ETH_EUR,LTC_RUB,DASH_RUB,ETH_LTC,USD_RUB,WAVES_BTC");
-            CMethodPublicAPI.СOrder_booksResult orderBookResult = JsonConvert.DeserializeObject<CMethodPublicAPI.СOrder_booksResult>(task4.Result.ToString());
+            CPublicAPI.СOrder_booksResult orderBookResult = JsonConvert.DeserializeObject<CPublicAPI.СOrder_booksResult>(task4.Result.ToString());
 
             var task5 = api.ApiQueryAsync("ticker", new Dictionary<string, string>());
-            CMethodPublicAPI.CTickerResult tickerResult = JsonConvert.DeserializeObject<CMethodPublicAPI.CTickerResult>(task5.Result.ToString());
+            CPublicAPI.CTickerResult tickerResult = JsonConvert.DeserializeObject<CPublicAPI.CTickerResult>(task5.Result.ToString());
 
             var task6 = api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
-            CMethodPublicAPI.CPair_settingsResult pair_settingsResult = JsonConvert.DeserializeObject<CMethodPublicAPI.CPair_settingsResult>(task6.Result.ToString());
+            CPublicAPI.CPair_settingsResult pair_settingsResult = JsonConvert.DeserializeObject<CPublicAPI.CPair_settingsResult>(task6.Result.ToString());
+
+            //Authenticated API
+            var task7 = api.ApiQueryAsync("user_info", new Dictionary<string, string>());
+            CA
+
+
+
+
             Console.ReadLine();
 
 
