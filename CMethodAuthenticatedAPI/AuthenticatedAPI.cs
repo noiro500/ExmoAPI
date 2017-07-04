@@ -51,7 +51,7 @@ namespace AuthenticatedAPI
 
         public class CUserOpenOrdersBtcusd
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -61,7 +61,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersBtceur
         {
-            public uint  Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -71,7 +71,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersBtcrub
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -81,7 +81,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersBtcuah
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -91,7 +91,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersDashbtc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -101,7 +101,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersDashusd
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -111,7 +111,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersEthbtc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -121,7 +121,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersEthusd
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -131,7 +131,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersDogebtc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -141,7 +141,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersLtcbtc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -151,7 +151,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersEthrub
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -161,7 +161,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersEtheur
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -171,7 +171,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersLtcrub
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -181,7 +181,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersDashrub
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -191,7 +191,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersEthltc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -201,7 +201,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersUsdrub
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -211,7 +211,7 @@ namespace AuthenticatedAPI
         }
         public class CUserOpenOrdersWavesbtc
         {
-            public uint Order_Id { get; set; }
+            public UInt64 Order_Id { get; set; }
             public string Created { get; set; }
             public string Type { get; set; }
             public string Pair { get; set; }
@@ -239,6 +239,7 @@ namespace AuthenticatedAPI
             public List<CUserOpenOrdersBtcusd> Eth_Ltc { get; set; }
             public List<CUserOpenOrdersBtcusd> Usd_Rub { get; set; }
             public List<CUserOpenOrdersBtcusd> Waves_Btc { get; set; }
+
         }
 
         #endregion
