@@ -7,859 +7,877 @@ using Newtonsoft.Json;
 
 namespace PublicAPI
 {
-    public static class CPublicAPI
+    public static class CPublicApi
     {
         #region Список сделок по валютной паре
-        public class CTradesBTCUSD
+        public class CTradesBtcusd
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesBTCEUR
+        public class CTradesBtceur
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesBTCRUB
+        public class CTradesBtcrub
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesBTCUAH
+        public class CTradesBtcuah
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesDASHBTC
+        public class CTradesDashbtc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesDASHUSD
+        public class CTradesDashusd
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesETHBTC
+        public class CTradesEthbtc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesETHUSD
+        public class CTradesEthusd
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesDOGEBTC
+        public class CTradesDogebtc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesLTCBTC
+        public class CTradesLtcbtc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesETHRUB
+        public class CTradesEthrub
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesETHEUR
+        public class CTradesEtheur
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesLTCRUB
+        public class CTradesLtcrub
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesDASHRUB
+        public class CTradesDashrub
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesETHLTC
+        public class CTradesEthltc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesUSDRUB
+        public class CTradesUsdrub
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
-        public class CTradesWAVESBTC
+        public class CTradesWavesbtc
         {
-            public int trade_id { get; set; }
-            public string type { get; set; }
-            public decimal quantity { get; set; }
-            public decimal price { get; set; }
-            public decimal amount { get; set; }
-            public int date { get; set; }
+            public int Trade_Id { get; set; }
+            public string Type { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Amount { get; set; }
+            public int Date { get; set; }
         }
 
         public class CTradesResult
         {
-            public List<CTradesBTCUSD> BTC_USD { get; set; }
-            public List<CTradesBTCEUR> BTC_EUR { get; set; }
-            public List<CTradesBTCRUB> BTC_RUB { get; set; }
-            public List<CTradesBTCUAH> BTC_UAH { get; set; }
-            public List<CTradesDASHBTC> DASH_BTC { get; set; }
-            public List<CTradesDASHUSD> DASH_USD { get; set; }
-            public List<CTradesETHBTC> ETH_BTC { get; set; }
-            public List<CTradesETHUSD> ETH_USD { get; set; }
-            public List<CTradesDOGEBTC> DOGE_BTC { get; set; }
-            public List<CTradesLTCBTC> LTC_BTC { get; set; }
-            public List<CTradesETHRUB> ETH_RUB { get; set; }
-            public List<CTradesETHEUR> ETH_EUR { get; set; }
-            public List<CTradesLTCRUB> LTC_RUB { get; set; }
-            public List<CTradesDASHRUB> DASH_RUB { get; set; }
-            public List<CTradesETHLTC> ETH_LTC { get; set; }
-            public List<CTradesUSDRUB> USD_RUB { get; set; }
-            public List<CTradesWAVESBTC> WAVES_BTC { get; set; }
+            public List<CTradesBtcusd> Btc_Usd { get; set; }
+            public List<CTradesBtceur> Btc_Eur { get; set; }
+            public List<CTradesBtcrub> Btc_Rub { get; set; }
+            public List<CTradesBtcuah> Btc_Uah { get; set; }
+            public List<CTradesDashbtc> Dash_Btc { get; set; }
+            public List<CTradesDashusd> Dash_Usd { get; set; }
+            public List<CTradesEthbtc> Eth_Btc { get; set; }
+            public List<CTradesEthusd> Eth_Usd { get; set; }
+            public List<CTradesDogebtc> Doge_Btc { get; set; }
+            public List<CTradesLtcbtc> Ltc_Btc { get; set; }
+            public List<CTradesEthrub> Eth_Rub { get; set; }
+            public List<CTradesEtheur> Eth_Eur { get; set; }
+            public List<CTradesLtcrub> Ltc_Rub { get; set; }
+            public List<CTradesDashrub> Dash_Rub { get; set; }
+            public List<CTradesEthltc> Eth_Ltc { get; set; }
+            public List<CTradesUsdrub> Usd_Rub { get; set; }
+            public List<CTradesWavesbtc> Waves_Btc { get; set; }
         }
         #endregion
         #region Книга ордеров по валютной паре
-        public class СOrder_booksBTCUSD
+        public class СOrderBooksBtcusd
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksBTCEUR
+        public class СOrderBooksBtceur
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksBTCRUB
+        public class СOrderBooksBtcrub
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksBTCUAH
+        public class СOrderBooksBtcuah
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksDASHBTC
+        public class СOrderBooksDashbtc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksDASHUSD
+        public class СOrderBooksDashusd
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksETHBTC
+        public class СOrderBooksEthbtc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksETHUSD
+        public class СOrderBooksEthusd
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksDOGEBTC
+        public class СOrderBooksDogebtc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksLTCBTC
+        public class СOrderBooksLtcbtc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksETHRUB
+        public class СOrderBooksEthrub
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksETHEUR
+        public class СOrderBooksEtheur
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksLTCRUB
+        public class СOrderBooksLtcrub
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksDASHRUB
+        public class СOrderBooksDashrub
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksETHLTC
+        public class СOrderBooksEthltc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksUSDRUB
+        public class СOrderBooksUsdrub
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksWAVESBTC
+        public class СOrderBooksWavesbtc
         {
-            public decimal ask_quantity { get; set; }
-            public decimal ask_amount { get; set; }
-            public decimal ask_top { get; set; }
-            public decimal bid_quantity { get; set; }
-            public decimal bid_amount { get; set; }
-            public decimal bid_top { get; set; }
-            public List<List<decimal>> ask { get; set; }
-            public List<List<decimal>> bid { get; set; }
+            public decimal Ask_Quantity { get; set; }
+            public decimal Ask_Amount { get; set; }
+            public decimal Ask_Top { get; set; }
+            public decimal Bid_Quantity { get; set; }
+            public decimal Bid_Amount { get; set; }
+            public decimal Bid_Top { get; set; }
+            public List<List<decimal>> Ask { get; set; }
+            public List<List<decimal>> Bid { get; set; }
         }
 
-        public class СOrder_booksResult
+        public class СOrderBooksResult
         {
-            public СOrder_booksBTCUSD BTC_USD { get; set; }
-            public СOrder_booksBTCEUR BTC_EUR { get; set; }
-            public СOrder_booksBTCRUB BTC_RUB { get; set; }
-            public СOrder_booksBTCUAH BTC_UAH { get; set; }
-            public СOrder_booksDASHBTC DASH_BTC { get; set; }
-            public СOrder_booksDASHUSD DASH_USD { get; set; }
-            public СOrder_booksETHBTC ETH_BTC { get; set; }
-            public СOrder_booksETHUSD ETH_USD { get; set; }
-            public СOrder_booksDOGEBTC DOGE_BTC { get; set; }
-            public СOrder_booksLTCBTC LTC_BTC { get; set; }
-            public СOrder_booksETHRUB ETH_RUB { get; set; }
-            public СOrder_booksETHEUR ETH_EUR { get; set; }
-            public СOrder_booksLTCRUB LTC_RUB { get; set; }
-            public СOrder_booksDASHRUB DASH_RUB { get; set; }
-            public СOrder_booksETHLTC ETH_LTC { get; set; }
-            public СOrder_booksUSDRUB USD_RUB { get; set; }
-            public СOrder_booksWAVESBTC WAVES_BTC { get; set; }
+            
+            public СOrderBooksBtcusd Btc_Usd { get; set; }
+            public СOrderBooksBtceur Btc_Eur { get; set; }
+            public СOrderBooksBtcrub Btc_Rub { get; set; }
+            public СOrderBooksBtcuah Btc_Uah { get; set; }
+            public СOrderBooksDashbtc Dash_Btc { get; set; }
+            public СOrderBooksDashusd Dash_Usd { get; set; }
+            public СOrderBooksEthbtc Eth_Btc { get; set; }
+            public СOrderBooksEthusd Eth_Usd { get; set; }
+            public СOrderBooksDogebtc Doge_Btc { get; set; }
+            public СOrderBooksLtcbtc Ltc_Btc { get; set; }
+            public СOrderBooksEthrub Eth_Rub { get; set; }
+            public СOrderBooksEtheur Eth_Eur { get; set; }
+            public СOrderBooksLtcrub Ltc_Rub { get; set; }
+            public СOrderBooksDashrub Dash_Rub { get; set; }
+            public СOrderBooksEthltc Eth_Ltc { get; set; }
+            public СOrderBooksUsdrub Usd_Rub { get; set; }
+            public СOrderBooksWavesbtc Waves_Btc { get; set; }
         }
         #endregion
         #region Cтатистика цен и объемов торгов по валютным парам
-        public class CTickerBTCUSD
+        public class CTickerBtcusd
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerBTCEUR
+        public class CTickerBtceur
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerBTCRUB
+        public class CTickerBtcrub
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerBTCUAH
+        public class CTickerBtcuah
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerDASHBTC
+        public class CTickerDashbtc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerDASHUSD
+        public class CTickerDashusd
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerETHBTC
+        public class CTickerEthbtc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerETHUSD
+        public class CTickerEthusd
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerDOGEBTC
+        public class CTickerDogebtc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerLTCBTC
+        public class CTickerLtcbtc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerETHRUB
+        public class CTickerEthrub
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerETHEUR
+        public class CTickerEtheur
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerLTCRUB
+        public class CTickerLtcrub
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerDASHRUB
+        public class CTickerDashrub
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerETHLTC
+        public class CTickerEthltc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerUSDRUB
+        public class CTickerUsdrub
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
-        public class CTickerWAVESBTC
+        public class CTickerWavesbtc
         {
-            public decimal buy_price { get; set; }
-            public decimal sell_price { get; set; }
-            public decimal last_trade { get; set; }
-            public decimal high { get; set; }
-            public decimal low { get; set; }
-            public decimal avg { get; set; }
-            public decimal vol { get; set; }
-            public decimal vol_curr { get; set; }
-            public int updated { get; set; }
+            public decimal Buy_Price { get; set; }
+            public decimal Sell_Price { get; set; }
+            public decimal Last_Trade { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Avg { get; set; }
+            public decimal Vol { get; set; }
+            public decimal Vol_Curr { get; set; }
+            public int Updated { get; set; }
         }
 
         public class CTickerResult
         {
-            public CTickerBTCUSD BTC_USD { get; set; }
-            public CTickerBTCEUR BTC_EUR { get; set; }
-            public CTickerBTCRUB BTC_RUB { get; set; }
-            public CTickerBTCUAH BTC_UAH { get; set; }
-            public CTickerDASHBTC DASH_BTC { get; set; }
-            public CTickerDASHUSD DASH_USD { get; set; }
-            public CTickerETHBTC ETH_BTC { get; set; }
-            public CTickerETHUSD ETH_USD { get; set; }
-            public CTickerDOGEBTC DOGE_BTC { get; set; }
-            public CTickerLTCBTC LTC_BTC { get; set; }
-            public CTickerETHRUB ETH_RUB { get; set; }
-            public CTickerETHEUR ETH_EUR { get; set; }
-            public CTickerLTCRUB LTC_RUB { get; set; }
-            public CTickerDASHRUB DASH_RUB { get; set; }
-            public CTickerETHLTC ETH_LTC { get; set; }
-            public CTickerUSDRUB USD_RUB { get; set; }
-            public CTickerWAVESBTC WAVES_BTC { get; set; }
+            
+            public CTickerBtcusd Btc_Usd { get; set; }
+            
+            public CTickerBtceur Btc_Eur { get; set; }
+            
+            public CTickerBtcrub Btc_Rub { get; set; }
+            
+            public CTickerBtcuah Btc_Uah { get; set; }
+            
+            public CTickerDashbtc Dash_Btc { get; set; }
+            
+            public CTickerDashusd Dash_Usd { get; set; }
+            
+            public CTickerEthbtc Eth_Btc { get; set; }
+           
+            public CTickerEthusd Eth_Usd { get; set; }
+            
+            public CTickerDogebtc Doge_Btc { get; set; }
+            
+            public CTickerLtcbtc Ltc_Btc { get; set; }
+            
+            public CTickerEthrub Eth_Rub { get; set; }
+            
+            public CTickerEtheur Eth_Eur { get; set; }
+            
+            public CTickerLtcrub Ltc_Rub { get; set; }
+            
+            public CTickerDashrub Dash_Rub { get; set; }
+            
+            public CTickerEthltc Eth_Ltc { get; set; }
+            
+            public CTickerUsdrub Usd_Rub { get; set; }
+            
+            public CTickerWavesbtc Waves_Btc { get; set; }
         }
         #endregion
         #region Настройки валютных пар
-        public class CPair_settingsBTCUSD
+        public class CPairSettingsBtcusd
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsBTCEUR
+        public class CPairSettingsBtceur
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsBTCRUB
+        public class CPairSettingsBtcrub
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsBTCUAH
+        public class CPairSettingsBtcuah
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsDASHBTC
+        public class CPairSettingsDashbtc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsDASHUSD
+        public class CPairSettingsDashusd
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsETHBTC
+        public class CPairSettingsEthbtc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsETHUSD
+        public class CPairSettingsEthusd
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsDOGEBTC
+        public class CPairSettingsDogebtc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsLTCBTC
+        public class CPairSettingsLtcbtc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsETHRUB
+        public class CPairSettingsEthrub
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsETHEUR
+        public class CPairSettingsEtheur
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsLTCRUB
+        public class CPairSettingsLtcrub
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsDASHRUB
+        public class CPairSettingsDashrub
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsETHLTC
+        public class CPairSettingsEthltc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsUSDRUB
+        public class CPairSettingsUsdrub
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsWAVESBTC
+        public class CPairSettingsWavesbtc
         {
-            public decimal min_quantity { get; set; }
-            public decimal max_quantity { get; set; }
-            public decimal min_price { get; set; }
-            public decimal max_price { get; set; }
-            public decimal max_amount { get; set; }
-            public decimal min_amount { get; set; }
+            public decimal Min_Quantity { get; set; }
+            public decimal Max_Quantity { get; set; }
+            public decimal Min_Price { get; set; }
+            public decimal Max_Price { get; set; }
+            public decimal Max_Amount { get; set; }
+            public decimal Min_Amount { get; set; }
         }
 
-        public class CPair_settingsResult
+        public class CPairSettingsResult
         {
-            public CPair_settingsBTCUSD BTC_USD { get; set; }
-            public CPair_settingsBTCEUR BTC_EUR { get; set; }
-            public CPair_settingsBTCRUB BTC_RUB { get; set; }
-            public CPair_settingsBTCUAH BTC_UAH { get; set; }
-            public CPair_settingsDASHBTC DASH_BTC { get; set; }
-            public CPair_settingsDASHUSD DASH_USD { get; set; }
-            public CPair_settingsETHBTC ETH_BTC { get; set; }
-            public CPair_settingsETHUSD ETH_USD { get; set; }
-            public CPair_settingsDOGEBTC DOGE_BTC { get; set; }
-            public CPair_settingsLTCBTC LTC_BTC { get; set; }
-            public CPair_settingsETHRUB ETH_RUB { get; set; }
-            public CPair_settingsETHEUR ETH_EUR { get; set; }
-            public CPair_settingsLTCRUB LTC_RUB { get; set; }
-            public CPair_settingsDASHRUB DASH_RUB { get; set; }
-            public CPair_settingsETHLTC ETH_LTC { get; set; }
-            public CPair_settingsUSDRUB USD_RUB { get; set; }
-            public CPair_settingsWAVESBTC WAVES_BTC { get; set; }
+            public CPairSettingsBtcusd Btc_Usd { get; set; }
+            public CPairSettingsBtceur Btc_Eur { get; set; }
+            public CPairSettingsBtcrub Btc_Rub { get; set; }
+            public CPairSettingsBtcuah Btc_Uah { get; set; }
+            public CPairSettingsDashbtc Dash_Btc { get; set; }
+            public CPairSettingsDashusd Dash_Usd { get; set; }
+            public CPairSettingsEthbtc Eth_Btc { get; set; }
+            public CPairSettingsEthusd Eth_Usd { get; set; }
+            public CPairSettingsDogebtc Doge_Btc { get; set; }
+            public CPairSettingsLtcbtc Ltc_Btc { get; set; }
+            public CPairSettingsEthrub Eth_Rub { get; set; }
+            public CPairSettingsEtheur Eth_Eur { get; set; }
+            public CPairSettingsLtcrub Ltc_Rub { get; set; }
+            public CPairSettingsDashrub Dash_Rub { get; set; }
+            public CPairSettingsEthltc Eth_Ltc { get; set; }
+            public CPairSettingsUsdrub Usd_Rub { get; set; }
+            public CPairSettingsWavesbtc Waves_Btc { get; set; }
         }
         #endregion//
     }

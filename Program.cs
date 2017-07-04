@@ -38,23 +38,31 @@ namespace ExmoAPI
 
             //Выбрать либо одну валютную пару, либо несколько (либо все)
             var task3 = api.ApiQueryAsync("trades", new Dictionary<string, string> (), "BTC_USD,BTC_EUR,BTC_RUB,BTC_UAH,DASH_BTC,DASH_USD,ETH_BTC,ETH_USD,DOGE_BTC,LTC_BTC,ETH_RUB,ETH_EUR,LTC_RUB,DASH_RUB,ETH_LTC,USD_RUB,WAVES_BTC");
-            CPublicAPI.CTradesResult tradesResult = JsonConvert.DeserializeObject<CPublicAPI.CTradesResult>(task3.Result.ToString());          
+            CPublicApi.CTradesResult tradesResult = 
+                JsonConvert.DeserializeObject<CPublicApi.CTradesResult>(task3.Result.ToString());          
 
             var task4 = api.ApiQueryAsync("order_book", new Dictionary<string, string>(), "BTC_USD,BTC_EUR,BTC_RUB,BTC_UAH,DASH_BTC,DASH_USD,ETH_BTC,ETH_USD,DOGE_BTC,LTC_BTC,ETH_RUB,ETH_EUR,LTC_RUB,DASH_RUB,ETH_LTC,USD_RUB,WAVES_BTC");
-            CPublicAPI.СOrder_booksResult orderBookResult = JsonConvert.DeserializeObject<CPublicAPI.СOrder_booksResult>(task4.Result.ToString());
+            CPublicApi.СOrderBooksResult orderBookResult = 
+                JsonConvert.DeserializeObject<CPublicApi.СOrderBooksResult>(task4.Result.ToString());
 
             var task5 = api.ApiQueryAsync("ticker", new Dictionary<string, string>());
-            CPublicAPI.CTickerResult tickerResult = JsonConvert.DeserializeObject<CPublicAPI.CTickerResult>(task5.Result.ToString());
+            CPublicApi.CTickerResult tickerResult = 
+                JsonConvert.DeserializeObject<CPublicApi.CTickerResult>(task5.Result.ToString());
 
             var task6 = api.ApiQueryAsync("pair_settings", new Dictionary<string, string> ());
-            CPublicAPI.CPair_settingsResult pair_settingsResult = JsonConvert.DeserializeObject<CPublicAPI.CPair_settingsResult>(task6.Result.ToString());
+            CPublicApi.CPairSettingsResult pairSettingsResult = 
+                JsonConvert.DeserializeObject<CPublicApi.CPairSettingsResult>(task6.Result.ToString());
 
             //Authenticated API
             var task7 = api.ApiQueryAsync("user_info", new Dictionary<string, string>());
-            CAuthenticatedApi.CUserInfoResult user_infoResult =
+            CAuthenticatedApi.CUserInfoResult userInfoResult =
                 JsonConvert.DeserializeObject<CAuthenticatedApi.CUserInfoResult>(task7.Result.ToString());
 
-            var task8 = api.ApiQueryAsync("order_create",
+            var task8 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
+            CAuthenticatedApi.CUserOpenOrdersResult userOpenOrdersResult =
+                JsonConvert.DeserializeObject<CAuthenticatedApi.CUserOpenOrdersResult>(task8.Result.ToString());
+
+            var task9 = api.ApiQueryAsync("order_create",
                 new Dictionary<string, string>
                 {
                     {"pair", "USD_RUB"},
@@ -62,7 +70,7 @@ namespace ExmoAPI
                     {"price", "40"},
                     {"type", "buy"}
                 });
-            CAuthenticatedApi.COrderCreateResult order_createResult= JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCreateResult>(task8.Result.ToString());
+            CAuthenticatedApi.COrderCreateResult orderCreateResult= JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCreateResult>(task9.Result.ToString());
 
             Console.ReadLine();
 
