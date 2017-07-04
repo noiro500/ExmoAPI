@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExmoAPI", "ExmoAPI.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicAPI", "PublicAPI\PublicAPI.csproj", "{C71F626F-0878-40E9-B310-4C4685766764}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMethodAuthenticatedAPI", "CMethodAuthenticatedAPI\CMethodAuthenticatedAPI.csproj", "{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C71F626F-0878-40E9-B310-4C4685766764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C71F626F-0878-40E9-B310-4C4685766764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C71F626F-0878-40E9-B310-4C4685766764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
