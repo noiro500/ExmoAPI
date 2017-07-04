@@ -72,8 +72,22 @@ namespace ExmoAPI
                 });
             CAuthenticatedApi.COrderCreateResult orderCreateResult= JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCreateResult>(task9.Result.ToString());
 
-            Console.ReadLine();
+            ////////////////////////////////////////////////////////////
+            /// Проверка открытых ордеров пользователя поле добавления нового
+            task8 = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
+            userOpenOrdersResult =
+                JsonConvert.DeserializeObject<CAuthenticatedApi.CUserOpenOrdersResult>(task8.Result.ToString());
+            ////////////////////////////////////////////////////////////////////////////////
 
+            string temp = userOpenOrdersResult.Usd_Rub[0].Order_Id.ToString();
+
+            var task10 = api.ApiQueryAsync("order_cancel",
+                new Dictionary<string, string> {{"order_id", userOpenOrdersResult.Usd_Rub[0].Order_Id.ToString()}});
+            CAuthenticatedApi.COrderCancelResult orderCancelResult =
+                JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCancelResult>(task10.Result.ToString());
+
+
+            Console.ReadLine();
 
             //Task.Factory.StartNew(async () =>
             //{

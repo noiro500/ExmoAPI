@@ -223,23 +223,22 @@ namespace AuthenticatedAPI
         public class CUserOpenOrdersResult
         {
             public List<CUserOpenOrdersBtcusd> Btc_Usd { get; set; }
-            public List<CUserOpenOrdersBtcusd> Btc_Eur { get; set; }
-            public List<CUserOpenOrdersBtcusd> Btc_Rub { get; set; }
-            public List<CUserOpenOrdersBtcusd> Btc_Uah { get; set; }
-            public List<CUserOpenOrdersBtcusd> Dash_Btc { get; set; }
-            public List<CUserOpenOrdersBtcusd> Dash_Usd { get; set; }
-            public List<CUserOpenOrdersBtcusd> Eth_Btc { get; set; }
-            public List<CUserOpenOrdersBtcusd> Eth_Usd { get; set; }
-            public List<CUserOpenOrdersBtcusd> Doge_Btc { get; set; }
-            public List<CUserOpenOrdersBtcusd> Ltc_Btc { get; set; }
-            public List<CUserOpenOrdersBtcusd> Eth_Rub { get; set; }
-            public List<CUserOpenOrdersBtcusd> Eth_Eur { get; set; }
-            public List<CUserOpenOrdersBtcusd> Ltc_Rub { get; set; }
-            public List<CUserOpenOrdersBtcusd> Dash_Rub { get; set; }
-            public List<CUserOpenOrdersBtcusd> Eth_Ltc { get; set; }
-            public List<CUserOpenOrdersBtcusd> Usd_Rub { get; set; }
-            public List<CUserOpenOrdersBtcusd> Waves_Btc { get; set; }
-
+            public List<CUserOpenOrdersBtceur> Btc_Eur { get; set; }
+            public List<CUserOpenOrdersBtcrub> Btc_Rub { get; set; }
+            public List<CUserOpenOrdersBtcuah> Btc_Uah { get; set; }
+            public List<CUserOpenOrdersDashbtc> Dash_Btc { get; set; }
+            public List<CUserOpenOrdersDashusd> Dash_Usd { get; set; }
+            public List<CUserOpenOrdersDashusd> Eth_Btc { get; set; }
+            public List<CUserOpenOrdersEthusd> Eth_Usd { get; set; }
+            public List<CUserOpenOrdersDogebtc> Doge_Btc { get; set; }
+            public List<CUserOpenOrdersLtcbtc> Ltc_Btc { get; set; }
+            public List<CUserOpenOrdersEthrub> Eth_Rub { get; set; }
+            public List<CUserOpenOrdersEtheur> Eth_Eur { get; set; }
+            public List<CUserOpenOrdersLtcrub> Ltc_Rub { get; set; }
+            public List<CUserOpenOrdersDashrub> Dash_Rub { get; set; }
+            public List<CUserOpenOrdersEthltc> Eth_Ltc { get; set; }
+            public List<CUserOpenOrdersUsdrub> Usd_Rub { get; set; }
+            public List<CUserOpenOrdersWavesbtc> Waves_Btc { get; set; }
         }
 
         #endregion
@@ -249,8 +248,18 @@ namespace AuthenticatedAPI
         {
             public bool Result { get; set; }
             public string Error { get; set; }
-            public int OrderId { get; set; }
+            public int Order_Id { get; set; }
         }
+        #endregion
+
+        #region Отмена ордера
+
+        public class COrderCancelResult
+        {
+            public bool result { get; set; }
+            public string error { get; set; }
+        }
+
         #endregion
     }
 }
