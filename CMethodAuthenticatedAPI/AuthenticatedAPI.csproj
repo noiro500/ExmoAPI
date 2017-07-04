@@ -7,7 +7,7 @@
     <ProjectGuid>{003D03BC-8B3A-402D-ABD2-B5DBB1A90276}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CMethodAuthenticatedAPI</RootNamespace>
+    <RootNamespace>AuthenticatedAPI</RootNamespace>
     <AssemblyName>AuthenticatedAPI</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
