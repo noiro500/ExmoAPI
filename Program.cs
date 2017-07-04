@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Threading;
 using System.Data;
 using Newtonsoft.Json;
 using PublicAPI;
+using AuthenticatedAPI;
 
 namespace ExmoAPI
 {
@@ -44,15 +46,23 @@ namespace ExmoAPI
             var task5 = api.ApiQueryAsync("ticker", new Dictionary<string, string>());
             CPublicAPI.CTickerResult tickerResult = JsonConvert.DeserializeObject<CPublicAPI.CTickerResult>(task5.Result.ToString());
 
-            var task6 = api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
+            var task6 = api.ApiQueryAsync("pair_settings", new Dictionary<string, string> ());
             CPublicAPI.CPair_settingsResult pair_settingsResult = JsonConvert.DeserializeObject<CPublicAPI.CPair_settingsResult>(task6.Result.ToString());
 
             //Authenticated API
             var task7 = api.ApiQueryAsync("user_info", new Dictionary<string, string>());
-            CA
+            CAuthenticatedApi.CUserInfoResult user_infoResult =
+                JsonConvert.DeserializeObject<CAuthenticatedApi.CUserInfoResult>(task7.Result.ToString());
 
-
-
+            var task8 = api.ApiQueryAsync("order_create",
+                new Dictionary<string, string>
+                {
+                    {"pair", "USD_RUB"},
+                    {"quantity", "0.1"},
+                    {"price", "40"},
+                    {"type", "buy"}
+                });
+            CAuthenticatedApi.COrderCreateResult order_createResult= JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCreateResult>(task8.Result.ToString());
 
             Console.ReadLine();
 
