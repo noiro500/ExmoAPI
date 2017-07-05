@@ -48,7 +48,6 @@ namespace ExmoAPI
                 content.Headers.Add("Key", _key);
                 if (tradeCouples != null)
                 {
-                    string temp = string.Format(_urlPublicAPI, apiName, tradeCouples);
                     var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
                     return await response.Content.ReadAsStringAsync();
                 }

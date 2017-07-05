@@ -86,37 +86,29 @@ namespace ExmoAPI
             CAuthenticatedApi.COrderCancelResult orderCancelResult =
                 JsonConvert.DeserializeObject<CAuthenticatedApi.COrderCancelResult>(task10.Result.ToString());
 
-            //var task11 = api.ApiQueryAsync("user_trades",
-            //    new Dictionary<string, string>
-            //    {
-            //        {
-            //            "pair",
-            //            "USD_RUB,ETH_RUB"
-            //        },
-            //        {"limit", "2"},
-            //        {"offset", "0"}
-            //    });
-            //CAuthenticatedApi.CUserTradesResult userTradesResult =
-            //    JsonConvert.DeserializeObject<CAuthenticatedApi.CUserTradesResult>(task11.Result.ToString());
-
-            Console.ReadLine();
-
-            Task.Factory.StartNew(async () =>
-            {
-                var result3 = await api.ApiQueryAsync("user_trades", new Dictionary<string, string>
+            var task11 = api.ApiQueryAsync("user_trades",
+                new Dictionary<string, string>
                 {
-                            {
-                                "pair",
-                                "USD_RUB,ETH_RUB"
-                            },
-                            {"limit", "2"},
-                            {"offset", "0"}
-                        });
-                
-                Console.WriteLine(result3);
-            });
+                    {
+                        "pair",
+                        "USD_RUB"
+                    },
+                    {"limit", "2"},
+                    {"offset", "0"}
+                });
+            CAuthenticatedApi.CUserTradesResult userTradesResult =
+                JsonConvert.DeserializeObject<CAuthenticatedApi.CUserTradesResult>(task11.Result.ToString());
 
             Console.ReadLine();
+
+            //Task.Factory.StartNew(async () =>
+            //{
+            //    var result3 = await api.ApiQueryAsync("user_cancelled_orders", new Dictionary<string, string> { { "limit", "2" }, { "offset", "0" } });
+            //    //Console.WriteLine("async result4");
+            //    //Console.WriteLine(result3);
+            //});
+
+            //Console.ReadLine();
         }
     }
 }
