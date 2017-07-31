@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Data;
 using Newtonsoft.Json;
-using PublicAPI;
-using AuthenticatedAPI;
+
 
 namespace ExmoAPI
 {

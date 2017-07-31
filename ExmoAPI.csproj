@@ -56,16 +56,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="CMethodAuthenticatedAPI\AuthenticatedAPI.csproj">
-      <Project>{003d03bc-8b3a-402d-abd2-b5dbb1a90276}</Project>
-      <Name>AuthenticatedAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="PublicAPI\PublicAPI.csproj">
-      <Project>{c71f626f-0878-40e9-b310-4c4685766764}</Project>
-      <Name>PublicAPI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
