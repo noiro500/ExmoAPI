@@ -54,10 +54,12 @@
     <Compile Include="ExmoApi.cs" />
     <Compile Include="General\CurrencyPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Public_API\COrderBook.cs" />
-    <Compile Include="Public_API\CTrades.cs" />
-    <Compile Include="Public_API\IOrderBook.cs" />
-    <Compile Include="Public_API\ITrades.cs" />
+    <Compile Include="Public_API\Classes\COrderBook.cs" />
+    <Compile Include="Public_API\Classes\CTicker.cs" />
+    <Compile Include="Public_API\Classes\CTrades.cs" />
+    <Compile Include="Public_API\Interfaces\IOrderBook.cs" />
+    <Compile Include="Public_API\Interfaces\ITicker.cs" />
+    <Compile Include="Public_API\Interfaces\ITrades.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
