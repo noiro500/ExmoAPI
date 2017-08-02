@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ExmoAPI.Public_API
 {
     // Список сделок по валютной паре
-    interface ITrades
+    public interface ITrades
     {
         int TradeId { get; set; }
         string Type { get; set; }
