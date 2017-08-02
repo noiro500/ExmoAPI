@@ -54,6 +54,7 @@
     <Compile Include="ExmoApi.cs" />
     <Compile Include="General\CurrencyPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Public_API\Classes\CCurrency.cs" />
     <Compile Include="Public_API\Classes\COrderBook.cs" />
     <Compile Include="Public_API\Classes\CPairSettings.cs" />
     <Compile Include="Public_API\Classes\CTicker.cs" />

@@ -1,4 +1,4 @@
-﻿namespace ExmoAPI.Public_API
+﻿namespace ExmoAPI.Public_API.Interfaces
 {
     //Настройки валютных пар
     public interface IPairSettings

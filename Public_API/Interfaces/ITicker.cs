@@ -1,4 +1,4 @@
-﻿namespace ExmoAPI.Public_API
+﻿namespace ExmoAPI.Public_API.Interfaces
 {
     //Cтатистика цен и объемов торгов по валютным парам
     public interface ITicker

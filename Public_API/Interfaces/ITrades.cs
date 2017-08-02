@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExmoAPI.Public_API
+﻿namespace ExmoAPI.Public_API.Interfaces
 {
     // Список сделок по валютной паре
     public interface ITrades

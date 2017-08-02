@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ExmoAPI.Public_API.Interfaces;
 using Newtonsoft.Json;
 
-namespace ExmoAPI.Public_API
+namespace ExmoAPI.Public_API.Classes
 {
     public class CPairSettings : IPairSettings
     {

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 
-namespace ExmoAPI.Public_API
+namespace ExmoAPI.Public_API.Interfaces
 {
     //Книга ордеров по валютной паре
     public interface IOrderBook
