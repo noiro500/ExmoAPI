@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 
 namespace ExmoAPI.Public_API
 {
-    //
     public class CTrades : ITrades
     {
         [JsonProperty("trade_id")]
