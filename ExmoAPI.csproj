@@ -55,9 +55,11 @@
     <Compile Include="General\CurrencyPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public_API\Classes\COrderBook.cs" />
+    <Compile Include="Public_API\Classes\CPairSettings.cs" />
     <Compile Include="Public_API\Classes\CTicker.cs" />
     <Compile Include="Public_API\Classes\CTrades.cs" />
     <Compile Include="Public_API\Interfaces\IOrderBook.cs" />
+    <Compile Include="Public_API\Interfaces\IPairSettings.cs" />
     <Compile Include="Public_API\Interfaces\ITicker.cs" />
     <Compile Include="Public_API\Interfaces\ITrades.cs" />
   </ItemGroup>
