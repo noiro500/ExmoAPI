@@ -11,6 +11,6 @@
         decimal Avg { get; set; }
         decimal Vol { get; set; }
         decimal VolCurr { get; set; }
-       int Updated { get; set; }
+        decimal Updated { get; set; }
     }
 }

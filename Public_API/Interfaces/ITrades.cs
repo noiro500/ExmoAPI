@@ -8,7 +8,7 @@
         decimal Price { get; set; }
         decimal Quantity { get; set; }
         decimal Amount { get; set; }
-        int Date { get; set; }
+        decimal Date { get; set; }
     }
     
 }
