@@ -3,12 +3,12 @@
     // Список сделок по валютной паре
     public interface ITrades
     {
-        int TradeId { get; set; }
-        string Type { get; set; }
-        decimal Price { get; set; }
-        decimal Quantity { get; set; }
-        decimal Amount { get; set; }
-        decimal Date { get; set; }
+        int TradeId { get;}
+        string Type { get; }
+        decimal Price { get; }
+        decimal Quantity { get;}
+        decimal Amount { get; }
+        decimal Date { get; }
     }
     
 }

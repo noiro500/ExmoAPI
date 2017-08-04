@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Authenticated_API\Classes\COrderCreate.cs" />
     <Compile Include="Authenticated_API\Classes\CUserInfo.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IOrderCancel.cs" />
     <Compile Include="Authenticated_API\Interfeces\IOrderCreate.cs" />
     <Compile Include="Authenticated_API\Interfeces\IUserInfo.cs" />
     <Compile Include="ExmoApi.cs" />
