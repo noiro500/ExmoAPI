@@ -11,6 +11,7 @@ namespace ExmoAPI.Public_API.Classes
         public static List<string> CurrencyList { get; set; }
         public static List<string> CurrencyPairList { get; set; }
 
+        //Получить имеющиеся валюты на бирже
         public static IList<string> GetCurrency(ExmoApi api)
         {
             var jsonCurrency = api.ApiQueryAsync("currency", new Dictionary<string, string>());
@@ -22,6 +23,7 @@ namespace ExmoAPI.Public_API.Classes
             return CurrencyList = parserStrings.Cast<string>().ToList();
         }
 
+        //Получить имеющиеся валютные пары
         public static IList<string> GetCurrencyPairList(ExmoApi api)
         {
             var jsonPairSettings = api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());

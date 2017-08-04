@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authenticated_API\Classes\COrderCancel.cs" />
     <Compile Include="Authenticated_API\Classes\COrderCreate.cs" />
     <Compile Include="Authenticated_API\Classes\CUserInfo.cs" />
     <Compile Include="Authenticated_API\Interfeces\IOrderCancel.cs" />

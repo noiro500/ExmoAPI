@@ -1,8 +1,9 @@
 ﻿namespace ExmoAPI.Authenticated_API.Interfeces
 {
+    //Отмена ордера
     public interface IOrderCancel
     {
-        bool Result { get; set; }
-        string Error { get; set; }
+        bool Result { get;}
+        string Error { get;}
     }
 }

@@ -8,63 +8,63 @@ namespace ExmoAPI.Authenticated_API.Classes
     public class CUserInfo
     {
         [JsonProperty("uid")]
-        public int Uid { get; set; }
+        public int Uid { get;private set;}
         [JsonProperty("server_date")]
-        public int ServerDate { get; set; }
+        public int ServerDate { get;private set;}
         [JsonProperty("balances")]
-        public Balances Balances { get; set; }
+        public Balances Balances { get;private set;}
         [JsonProperty("reserved")]
-        public Reserved Reserved { get; set; }
+        public Reserved Reserved { get;private set;}
     }
 
     public class Balances : IBalances
     {
         [JsonProperty("USD")]
-        public decimal Usd { get; set; }
+        public decimal Usd { get;private set;}
         [JsonProperty("EUR")]
-        public decimal Eur { get; set; }
+        public decimal Eur { get;private set;}
         [JsonProperty("RUB")]
-        public decimal Rub { get; set; }
+        public decimal Rub { get;private set;}
         [JsonProperty("UAH")]
-        public decimal Uah { get; set; }
+        public decimal Uah { get;private set;}
         [JsonProperty("BTC")]
-        public decimal Btc { get; set; }
+        public decimal Btc { get;private set;}
         [JsonProperty("LTC")]
-        public decimal Ltc { get; set; }
+        public decimal Ltc { get;private set;}
         [JsonProperty("DOGE")]
-        public decimal Doge { get; set; }
+        public decimal Doge { get;private set;}
         [JsonProperty("DASH")]
-        public decimal Dash { get; set; }
+        public decimal Dash { get;private set;}
         [JsonProperty("ETH")]
-        public decimal Eth { get; set; }
+        public decimal Eth { get;private set;}
         [JsonProperty("WAVES")]
-        public decimal Waves { get; set; }
+        public decimal Waves { get;private set;}
         [JsonProperty("ZEC")]
-        public decimal Zec { get; set; }
+        public decimal Zec { get;private set;}
     }
     public class Reserved : IReserved
     {
         [JsonProperty("USD")]
-        public decimal Usd { get; set; }
+        public decimal Usd { get;private set;}
         [JsonProperty("EUR")]
-        public decimal Eur { get; set; }
+        public decimal Eur { get;private set;}
         [JsonProperty("RUB")]
-        public decimal Rub { get; set; }
+        public decimal Rub { get;private set;}
         [JsonProperty("UAH")]
-        public decimal Uah { get; set; }
+        public decimal Uah { get;private set;}
         [JsonProperty("BTC")]
-        public decimal Btc { get; set; }
+        public decimal Btc { get;private set;}
         [JsonProperty("LTC")]
-        public decimal Ltc { get; set; }
+        public decimal Ltc { get;private set;}
         [JsonProperty("DOGE")]
-        public decimal Doge { get; set; }
+        public decimal Doge { get;private set;}
         [JsonProperty("DASH")]
-        public decimal Dash { get; set; }
+        public decimal Dash { get;private set;}
         [JsonProperty("ETH")]
-        public decimal Eth { get; set; }
+        public decimal Eth { get;private set;}
         [JsonProperty("WAVES")]
-        public decimal Waves { get; set; }
+        public decimal Waves { get;private set;}
         [JsonProperty("ZEC")]
-        public decimal Zec { get; set; }
+        public decimal Zec { get;private set;}
     }
 }
