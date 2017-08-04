@@ -55,9 +55,11 @@
     <Compile Include="Authenticated_API\Classes\COrderCreate.cs" />
     <Compile Include="Authenticated_API\Classes\CUserInfo.cs" />
     <Compile Include="Authenticated_API\Classes\CUserOpenOrders.cs" />
+    <Compile Include="Authenticated_API\Classes\CUserTrades.cs" />
     <Compile Include="Authenticated_API\Interfeces\IOrderCancel.cs" />
     <Compile Include="Authenticated_API\Interfeces\IOrderCreate.cs" />
     <Compile Include="Authenticated_API\Interfeces\IUserInfo.cs" />
+    <Compile Include="Authenticated_API\Interfeces\IUserTrades.cs" />
     <Compile Include="Authenticated_API\IUserOpenOrders.cs" />
     <Compile Include="ExmoApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
