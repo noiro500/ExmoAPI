@@ -67,7 +67,9 @@
     <Compile Include="Authenticated_API\Interfeces\IUserInfo.cs" />
     <Compile Include="Authenticated_API\Interfeces\IUserTrades.cs" />
     <Compile Include="Authenticated_API\Interfeces\IUserOpenOrders.cs" />
+    <Compile Include="Generic\CPublicAPI.cs" />
     <Compile Include="Generic\ExmoApi.cs" />
+    <Compile Include="Generic\IPublicAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Public_API\Classes\CCurrency.cs" />
     <Compile Include="Public_API\Classes\COrderBook.cs" />
