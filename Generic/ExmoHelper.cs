@@ -2,7 +2,7 @@
 
 namespace ExmoAPI.Generic
 {
-    public interface IPublicAPI<T>
+    public interface IHelperPublicAPI<T>
     {
         IList<T> ResultTradesList { get; }
         T ResultList { get; }
@@ -10,4 +10,5 @@ namespace ExmoAPI.Generic
         //IList<T> GetResultTradesList(string method, string currentPair, ExmoApi api);
         T GetResult(string method, string currentPair, ExmoApi api);
     }
+
 }

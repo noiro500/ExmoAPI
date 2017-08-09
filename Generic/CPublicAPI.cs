@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace ExmoAPI.Generic
 {
-    public class CPublicAPI<T> : IPublicAPI<T>
+    public class CHelperPublicAPI<T> : IHelperPublicAPI<T>
     {
         public IList<T> ResultTradesList { get; private set; }
         public T ResultList { get; private set; }
