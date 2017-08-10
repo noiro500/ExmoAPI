@@ -1,2 +1,2 @@
 # ExmoAPI
-ExmoAPI is interface for Exmo exchange https://exmo.com
+ExmoAPI is interface for Exmo exchange https://exmo.com (https://exmo.me)
