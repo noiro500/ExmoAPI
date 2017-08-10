@@ -19,8 +19,7 @@ namespace ExmoTest
     {
         static void Main(string[] args)
         {
-            var api = new ExmoApi("K-152c412836b5cc48671d20f2a48e59990057a22c",
-                "S-6c0ac88984cab15fdbd5af301e1348d7b925a34d");
+            var api = new ExmoApi("K-152c412836b5cc48671d20f2a48e59990057a22c", "S-6c0ac88984cab15fdbd5af301e1348d7b925a34d");
             string currentPair = "LTC_RUB";
 
 
@@ -111,6 +110,9 @@ namespace ExmoTest
 
             #region user_open_orders
 
+
+
+
             var jsonUserOpenOrders = api.ApiQueryAsync("user_open_orders", new Dictionary<string, string>());
             var objUserOpenOrders = JObject.Parse(jsonUserOpenOrders.Result.ToString());
             CUserOpenOrders[] objArrayUserOpenOrders;
@@ -200,9 +202,18 @@ namespace ExmoTest
 
             #endregion
 
-            IHelperPublicAPI<CPairSettings> test = new CHelperPublicAPI<CPairSettings>();
-            test.GetResult("pair_settings", currentPair, api);
+            IHelperAuthAPI<COrderCreate> test=new CHelperAuthAPI<COrderCreate>();
+            test.GetResult("order_create", api,
+                new Dictionary<string, string>()
+                {
+                    {"pair", currentPair},
+                    {"quantity", 0.1.ToString(CultureInfo.InvariantCulture)},
+                    {"price", 2000.ToString(CultureInfo.InvariantCulture)},
+                    {"type", "buy"}
+                });
             var a = test.Result;
+
+           
         }
     }
 }
