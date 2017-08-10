@@ -5,10 +5,15 @@ namespace ExmoAPI.Generic
     public interface IHelperPublicAPI<T>
     {
         IList<T> ResultTradesList { get; }
-        T ResultList { get; }
-
-        //IList<T> GetResultTradesList(string method, string currentPair, ExmoApi api);
+        T Result { get; }
         T GetResult(string method, string currentPair, ExmoApi api);
+    }
+
+    public interface IHelperAuthAPI<T>
+    {
+        IList<T> ResultList { get; }
+        T Result { get; }
+        T GetResult(string method, Dictionary<string, string> dic, ExmoApi api);
     }
 
 }
