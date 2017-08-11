@@ -13,7 +13,7 @@ namespace ExmoAPI.Generic
     {
         IList<T> ResultList { get; }
         T Result { get; }
-        T GetResult(string method, ExmoApi api, Dictionary<string, string> dic);
+        T GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string currentPair=null);
     }
 
 }

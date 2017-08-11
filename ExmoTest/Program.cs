@@ -123,6 +123,7 @@ namespace ExmoTest
                 {
                     objArrayUserOpenOrders =
                         JsonConvert.DeserializeObject<CUserOpenOrders[]>(objUserOpenOrders[c].ToString());
+                    
                     foreach (var f in objArrayUserOpenOrders)
                     {
                         Console.WriteLine(" " + c);
@@ -202,18 +203,16 @@ namespace ExmoTest
 
             #endregion
 
-            IHelperAuthAPI<COrderCreate> test=new CHelperAuthAPI<COrderCreate>();
-            test.GetResult("order_create", api,
+            IHelperAuthAPI<CRequiredAmount> test=new CHelperAuthAPI<CRequiredAmount>();
+            test.GetResult("required_amount", api,
                 new Dictionary<string, string>()
                 {
                     {"pair", currentPair},
-                    {"quantity", 0.1.ToString(CultureInfo.InvariantCulture)},
-                    {"price", 2000.ToString(CultureInfo.InvariantCulture)},
-                    {"type", "buy"}
+                    {"quantity", 7.ToString(CultureInfo.InvariantCulture)}
                 });
             var a = test.Result;
 
-           
+
         }
     }
 }

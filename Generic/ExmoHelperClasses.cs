@@ -12,7 +12,7 @@ namespace ExmoAPI.Generic
         public IList<T> ResultList { get; private set; }
         public T Result { get; private set; }
 
-        private IList<T> GetResultTradesList(string method, ExmoApi api, string currentPair)
+        private IList<T> GetResultList(string method, ExmoApi api, string currentPair)
         {
             var jsonQuery = api.ApiQueryAsync(method, new Dictionary<string, string>(), currentPair);
             var objQuery = JObject.Parse(jsonQuery.Result.ToString());
@@ -24,7 +24,7 @@ namespace ExmoAPI.Generic
         {
             if (method == "trades")
             {
-                GetResultTradesList(method, api, currentPair);
+                GetResultList(method, api, currentPair);
                 return Result;
             }
             var jsonQuery = api.ApiQueryAsync(method, new Dictionary<string, string>(), currentPair);
@@ -41,11 +41,29 @@ namespace ExmoAPI.Generic
 
         public T Result { get; private set; }
 
-        public T GetResult(string method, ExmoApi api, Dictionary<string, string> dic)
+        private IList<T> GetResultList(ref string method, ref ExmoApi api, ref Dictionary<string, string> dic, ref string currentPair)
+        {
+            var jsonQuery = api.ApiQueryAsync(method, dic);
+            if (method == "user_cancelled_orders")
+            {
+                var objQueryArray = JArray.Parse(jsonQuery.Result.ToString());
+                var objResultArray = JsonConvert.DeserializeObject<T[]>(objQueryArray.ToString());
+                return ResultList = objResultArray.ToList();
+            }
+            var objQuery = JObject.Parse(jsonQuery.Result.ToString());
+            var objResult = JsonConvert.DeserializeObject<T[]>(objQuery[currentPair].ToString());
+            return ResultList = objResult.ToList();
+        }
+
+        public T GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string currentPair=null)
         {
             if (dic == null)
                 dic=new Dictionary<string, string>();
-
+            if (method == "user_open_orders" || method == "user_trades" || method == "user_cancelled_orders")
+            {
+                GetResultList(ref method, ref api, ref dic, ref currentPair);
+                return Result; 
+            }
             var jsonQuery = api.ApiQueryAsync(method, dic);
             var objQuery = JObject.Parse(jsonQuery.Result.ToString());
             var objResult = JsonConvert.DeserializeObject<T>(objQuery.ToString());
