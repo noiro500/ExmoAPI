@@ -12,7 +12,7 @@ namespace ExmoAPI.Generic
         public IList<T> ResultList { get; private set; }
         public T Result { get; private set; }
 
-        private IList<T> GetResultList(string method, ExmoApi api, string currentPair)
+        private IList<T> GetResultList(ref string method, ref ExmoApi api, ref string currentPair)
         {
             var jsonQuery = api.ApiQueryAsync(method, new Dictionary<string, string>(), currentPair);
             var objQuery = JObject.Parse(jsonQuery.Result.ToString());
@@ -24,7 +24,7 @@ namespace ExmoAPI.Generic
         {
             if (method == "trades")
             {
-                GetResultList(method, api, currentPair);
+                GetResultList(ref method, ref api, ref currentPair);
                 return Result;
             }
             var jsonQuery = api.ApiQueryAsync(method, new Dictionary<string, string>(), currentPair);

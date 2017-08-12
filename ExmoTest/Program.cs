@@ -212,7 +212,8 @@ namespace ExmoTest
                 });
             var a = test.Result;
 
-
+            IHelperPublicAPI<CTrades> uuu=new CHelperPublicAPI<CTrades>();
+            var ggg = uuu.GetResult("trades", api, currentPair);
         }
     }
 }
