@@ -9,8 +9,8 @@ namespace ExmoAPI.Generic
 {
     public class CHelperPublicAPI<T> : IHelperPublicAPI<T>
     {
-        public IList<T> ResultList { get; private set; }
-        public T Result { get; private set; }
+        public IList<T> ResultList { get; private set; } = null;
+        public T Result { get; private set; } = default(T);
 
         private IList<T> GetResultList(ref string method, ref ExmoApi api, ref string currentPair)
         {
@@ -37,9 +37,9 @@ namespace ExmoAPI.Generic
 
     public class CHelperAuthAPI<T> : IHelperAuthAPI<T>
     {
-        public IList<T> ResultList { get; private set; }
+        public IList<T> ResultList { get; private set; } = null;
 
-        public T Result { get; private set; }
+        public T Result { get; private set; } = default(T);
 
         private IList<T> GetResultList(ref string method, ref ExmoApi api, ref Dictionary<string, string> dic, ref string currentPair)
         {
