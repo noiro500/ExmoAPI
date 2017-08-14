@@ -19,7 +19,7 @@ namespace ExmoTest
     {
         static void Main(string[] args)
         {
-            var api = new ExmoApi("K-152c412836b5cc48671d20f2a48e59990057a22c", "S-6c0ac88984cab15fdbd5af301e1348d7b925a34d");
+            var api = new ExmoApi("", "");
             string currentPair = "LTC_RUB";
 
 
