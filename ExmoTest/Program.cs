@@ -24,7 +24,7 @@ namespace ExmoTest
 
 
             #region Public_API
-
+            /*
             #region trades
 
             var jsonTrades = api.ApiQueryAsync("trades", new Dictionary<string, string>(), currentPair);
@@ -59,11 +59,13 @@ namespace ExmoTest
                 JsonConvert.DeserializeObject<CPairSettings>(objPairSettings[currentPair].ToString());
 
             #endregion
-
+            */
             #endregion
-
+            
+            
+            
             #region Authenticated_API
-
+            /*
             #region user_info
 
             var jsonUserInfo = api.ApiQueryAsync("user_info", new Dictionary<string, string>());
@@ -74,7 +76,7 @@ namespace ExmoTest
 
             #region order_create
 
-            /*
+            
             var pair = currentPair;
             var quantity = 0.17;
             var price = 2800;
@@ -90,13 +92,13 @@ namespace ExmoTest
 
             var objOrderCreate = JObject.Parse(jsonOrderCreate.Result.ToString());
             var objArrayOrderCreate = JsonConvert.DeserializeObject<COrderCreate>(objOrderCreate.ToString());
-            */
+            
 
             #endregion
 
             #region order_cancel
 
-            /*
+            
             var jsonOrderCancel = api.ApiQueryAsync("order_cancel",
                 new Dictionary<string, string>()
                 {
@@ -104,7 +106,7 @@ namespace ExmoTest
                 });
             var objOrderCansel = JObject.Parse(jsonOrderCancel.Result.ToString());
             var objArrayOrderCansel = JsonConvert.DeserializeObject<COrderCancel>(objOrderCansel.ToString());
-            */
+            
 
             #endregion
 
@@ -200,7 +202,7 @@ namespace ExmoTest
             var objArrayRequiredAmount = JsonConvert.DeserializeObject<CRequiredAmount>(objRequiredAmount.ToString());
 
             #endregion
-
+            */
             #endregion
 
             IHelperAuthAPI<CRequiredAmount> test=new CHelperAuthAPI<CRequiredAmount>();
