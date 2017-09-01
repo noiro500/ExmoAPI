@@ -46,18 +46,12 @@ namespace ExmoAPI
                 var content = new FormUrlEncodedContent(req);
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
+                HttpResponseMessage response;
                 if (tradeCouples != null)
-                {
-                    var response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
-                    return await response.Content.ReadAsStringAsync();
-                }
+                    response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
                 else
-                {
-                    var response = await client.PostAsync(string.Format(_url, apiName), content);
-                    return await response.Content.ReadAsStringAsync();
-                }
-
-                
+                    response = await client.PostAsync(string.Format(_url, apiName), content);
+                return await response.Content.ReadAsStringAsync();
             }
         }
 
@@ -94,12 +88,11 @@ namespace ExmoAPI
                     var data = await response.Content.ReadAsStringAsync();
                     Console.WriteLine(data);
                 });
-                
                 return response.StatusCode;
             }
         }
 
-        public string ApiQuery(string apiName, IDictionary<string,string> req)
+        public string ApiQuery(string apiName, IDictionary<string,string> req, string tradeCouples = null)
         {
             using (var wb = new WebClient())
             {
