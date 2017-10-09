@@ -1,3 +1,3 @@
 # ExmoAPI
-ExmoAPI is interface for Exmo exchange https://exmo.com (https://exmo.me) 
+ExmoAPI is C# interface for Exmo exchange https://exmo.com (https://exmo.me) 
 
