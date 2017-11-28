@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ExmoAPI;
@@ -205,17 +206,28 @@ namespace ExmoTest
             */
             #endregion
 
-            IHelperAuthAPI<CRequiredAmount> test=new CHelperAuthAPI<CRequiredAmount>();
-            test.GetResult("required_amount", api,
-                new Dictionary<string, string>()
-                {
-                    {"pair", currentPair},
-                    {"quantity", 7.ToString(CultureInfo.InvariantCulture)}
-                });
-            var a = test.Result;
+            //IHelperAuthAPI<CRequiredAmount> test=new CHelperAuthAPI<CRequiredAmount>();
+            //test.GetResult("required_amount", api,
+            //    new Dictionary<string, string>()
+            //    {
+            //        {"pair", currentPair},
+            //        {"quantity", 7.ToString(CultureInfo.InvariantCulture)}
+            //    });
+            //var a = test.Result;
 
-            IHelperPublicAPI<CTrades> uuu=new CHelperPublicAPI<CTrades>();
-            var ggg = uuu.GetResult("trades", api, currentPair);
+            //IHelperPublicAPI<CTrades> uuu=new CHelperPublicAPI<CTrades>();
+            //var ggg = uuu.GetResult("trades", api, currentPair);
+            IHelperPublicAPI<CTrades> ttt=new CHelperPublicAPI<CTrades>();
+            
+            Task  eResult = ttt.GetResult("trades", currentPair, api);
+            eResult.Wait();
+            foreach (var e in ttt.ResultList)
+            {
+                Console.WriteLine(e.Price);
+            }
+           
+            Console.ReadLine();
         }
+        
     }
 }

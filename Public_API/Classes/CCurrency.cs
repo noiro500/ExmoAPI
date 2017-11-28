@@ -8,8 +8,8 @@ namespace ExmoAPI.Public_API.Classes
     //Cписок валют биржи
     public static class CCurrency
     {
-        public static List<string> CurrencyList { get; set; }
-        public static List<string> CurrencyPairList { get; set; }
+        public static List<string> CurrencyList { get; private set; }
+        public static List<string> CurrencyPairList { get; private set; }
 
         //Получить имеющиеся валюты на бирже
         public static IList<string> GetCurrency(ExmoApi api)

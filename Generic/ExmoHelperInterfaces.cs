@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ExmoAPI.Generic
 {
     public interface IHelperPublicAPI<T>
     {
-        //IList<T> ResultList { get; }
+        IList<T> ResultList { get; }
         //T Result { get; }
-        T GetResult(string method, ExmoApi api, string currentPair);
+        Task<T> GetResult(string method, string currentPair, ExmoApi api);
     }
 
     public interface IHelperAuthAPI<T>
     {
         IList<T> ResultList { get; }
         T Result { get; }
-        T GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string currentPair=null);
+        Task<T> GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string currentPair=null);
     }
 
 }
