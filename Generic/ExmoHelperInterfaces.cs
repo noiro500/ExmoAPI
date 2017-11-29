@@ -7,14 +7,14 @@ namespace ExmoAPI.Generic
     {
         IList<T> ResultList { get; }
         //T Result { get; }
-        Task<T> GetResult(string method, ExmoApi api, string currentPair);
+        Task<T> GetResult(string method, ExmoApi api, string tradeCouples);
     }
 
     public interface IHelperAuthAPI<T>
     {
         IList<T> ResultList { get; }
         T Result { get; }
-        Task<T> GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string currentPair=null);
+        Task<T> GetResult(string method, ExmoApi api, Dictionary<string, string> dic=null, string tradeCouples = null);
     }
 
 }

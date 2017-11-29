@@ -20,7 +20,7 @@ namespace ExmoAPI
         private string _secret; 
         private string _url = "http://api.exmo.com/v1/{0}";
 
-        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}";
+        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}&limit={2}";
 
         static ExmoApi()
         {
@@ -33,7 +33,7 @@ namespace ExmoAPI
             _secret = secret;
         }
 
-        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples=null)
+        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples=null, int limit=10)
         {
             using (var client = new HttpClient())
             {
@@ -47,8 +47,9 @@ namespace ExmoAPI
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
                 HttpResponseMessage response;
+                string uuu = string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString());
                 if (tradeCouples != null)
-                    response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
+                    response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString()));
                 else
                     response = await client.PostAsync(string.Format(_url, apiName), content);
                 return await response.Content.ReadAsStringAsync();
@@ -81,7 +82,7 @@ namespace ExmoAPI
                 var content = new FormUrlEncodedContent(req);
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
-
+                
                 var response = await client.PostAsync(string.Format(_url, apiName), content);
                 await Task.Factory.StartNew(async () =>
                 {

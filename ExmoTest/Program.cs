@@ -23,7 +23,7 @@ namespace ExmoTest
         static void Main(string[] args)
         {
             var api = new ExmoApi("", "");
-            string pair = "LTC_RUB";
+            string tradeCouples = "LTC_RUB";
 
 
 
@@ -205,11 +205,22 @@ namespace ExmoTest
             ///<returns>ResultList type=IList</returns>
             /// </summary>
             IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
-            testTradesApi.GetResult("trades", api, pair);
+            var b=testTradesApi.GetResult("trades", api, tradeCouples);
+            
             foreach (var tmp in testTradesApi.ResultList)
             {
                 Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
             }
+
+            ///<summary>order_book
+            /// <remarks>Книга ордеров по валютной паре</remarks>
+            /// <param name="pair">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
+            ///<returns>ResultList type=IList</returns>
+            /// </summary>
+            IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
+            var a =testOrderBookApi.GetResult("order_book", api, tradeCouples);
+            var o = a.Result;
             Console.ReadLine();
 
         }
