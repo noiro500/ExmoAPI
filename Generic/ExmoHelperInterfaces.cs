@@ -7,7 +7,7 @@ namespace ExmoAPI.Generic
     {
         IList<T> ResultList { get; }
         //T Result { get; }
-        Task<T> GetResult(string method, string currentPair, ExmoApi api);
+        Task<T> GetResult(string method, ExmoApi api, string currentPair);
     }
 
     public interface IHelperAuthAPI<T>

@@ -19,14 +19,16 @@ namespace ExmoAPI.Generic
             //var objQuery = JObject.Parse(jsonQuery.Result.ToString());
             var objQuery = JObject.Parse(jsonQuery.ToString());
             var objResult = JsonConvert.DeserializeObject<T[]>(objQuery[currentPair].ToString());
-            return /*ResultList =*/objResult.ToList();
+            return ResultList =objResult.ToList();
         }
 
-        public async Task<T> GetResult(string method, string currentPair, ExmoApi api)
+        public async Task<T> GetResult(string method, ExmoApi api, string currentPair)
         {
             if (method == "trades")
             {
-                ResultList = await GetResultList(method, api, currentPair);
+                //ResultList = await GetResultList(method, api, currentPair);
+                Task resulTask = GetResultList(method, api, currentPair);
+                resulTask.Wait();
                 return default(T);
             }
             var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), currentPair);

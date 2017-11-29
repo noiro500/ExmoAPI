@@ -16,6 +16,6 @@ namespace ExmoAPI.Public_API.Classes
         [JsonProperty("amount")]
         public decimal Amount { get ; private set; }
         [JsonProperty("date")]
-        public decimal Date { get ; private set ; }
+        public double Date { get ; private set ; }
     }
 }

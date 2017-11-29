@@ -25,7 +25,7 @@ namespace ExmoAPI.Authenticated_API.Classes
         [JsonProperty("trade_id")]
         public decimal TradeId {get;private set;}
         [JsonProperty("date")]
-        public decimal Date {get;private set;}
+        public double Date {get;private set;}
         [JsonProperty("type")]
         public string Type {get;private set;}
         [JsonProperty("pair")]

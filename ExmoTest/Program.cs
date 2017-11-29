@@ -14,6 +14,8 @@ using ExmoAPI.Generic;
 using ExmoAPI.Public_API.Classes;
 using ExmoAPI.Public_API.Interfaces;
 
+#pragma warning disable 1587
+
 namespace ExmoTest
 {
     class Program
@@ -21,50 +23,13 @@ namespace ExmoTest
         static void Main(string[] args)
         {
             var api = new ExmoApi("", "");
-            string currentPair = "LTC_RUB";
+            string pair = "LTC_RUB";
 
 
-            #region Public_API
-            /*
-            #region trades
-
-            var jsonTrades = api.ApiQueryAsync("trades", new Dictionary<string, string>(), currentPair);
-            var objTrades = JObject.Parse(jsonTrades.Result.ToString());
-            var objArray = JsonConvert.DeserializeObject<CTrades[]>(objTrades[currentPair].ToString());
 
 
-            #endregion
-
-            #region order_book
-
-            var jsonOrderBook = api.ApiQueryAsync("order_book", new Dictionary<string, string>(), currentPair);
-            var objOrderBook = JObject.Parse(jsonOrderBook.Result.ToString());
-            var objArrayOrderBook = JsonConvert.DeserializeObject<COrderBook>(objOrderBook[currentPair].ToString());
 
 
-            #endregion
-
-            #region ticker
-
-            var jsonTicker = api.ApiQueryAsync("ticker", new Dictionary<string, string>());
-            var objTicker = JObject.Parse(jsonTicker.Result.ToString());
-            var objArrayTicker = JsonConvert.DeserializeObject<CTicker>(objTicker[currentPair].ToString());
-
-            #endregion
-
-            #region pair_settings
-
-            var jsonPairSettings = api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
-            var objPairSettings = JObject.Parse(jsonPairSettings.Result.ToString());
-            var objArrayPairSettings =
-                JsonConvert.DeserializeObject<CPairSettings>(objPairSettings[currentPair].ToString());
-
-            #endregion
-            */
-            #endregion
-            
-            
-            
             #region Authenticated_API
             /*
             #region user_info
@@ -217,16 +182,36 @@ namespace ExmoTest
 
             //IHelperPublicAPI<CTrades> uuu=new CHelperPublicAPI<CTrades>();
             //var ggg = uuu.GetResult("trades", api, currentPair);
-            IHelperPublicAPI<CTrades> ttt=new CHelperPublicAPI<CTrades>();
+
+            /*IHelperPublicAPI<CTrades> ttt=new CHelperPublicAPI<CTrades>();
             
             Task  eResult = ttt.GetResult("trades", currentPair, api);
             eResult.Wait();
             foreach (var e in ttt.ResultList)
             {
                 Console.WriteLine(e.Price);
+            }*/
+
+            /***********************/
+            /********Example********/
+            /***********************/
+
+            /*Public API*/
+
+
+            ///<summary>trades
+            /// <remarks>Список сделок по валютной паре</remarks>
+            /// <param name="pair">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            ///<returns>ResultList type=IList</returns>
+            /// </summary>
+            IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
+            testTradesApi.GetResult("trades", api, pair);
+            foreach (var tmp in testTradesApi.ResultList)
+            {
+                Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
             }
-           
             Console.ReadLine();
+
         }
         
     }
