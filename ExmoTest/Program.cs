@@ -201,11 +201,12 @@ namespace ExmoTest
 
             ///<summary>trades
             /// <remarks>Список сделок по валютной паре</remarks>
-            /// <param name="pair">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
             ///<returns>ResultList type=IList</returns>
             /// </summary>
             IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
-            var b=testTradesApi.GetResult("trades", api, tradeCouples);
+            testTradesApi.GetResult("trades", api, tradeCouples, 2);
             
             foreach (var tmp in testTradesApi.ResultList)
             {
@@ -219,8 +220,22 @@ namespace ExmoTest
             ///<returns>ResultList type=IList</returns>
             /// </summary>
             IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
-            var a =testOrderBookApi.GetResult("order_book", api, tradeCouples);
-            var o = a.Result;
+            var a =testOrderBookApi.GetResult("order_book", api, tradeCouples, 10);
+            
+            Console.WriteLine("Книга ордеров по валютной паре:");
+            Console.WriteLine($"{a.Result.AskQuantity} {a.Result.AskAmount} {a.Result.AskTop}, {a.Result.BidQuantity}," +
+                              $"{testOrderBookApi.Result.BidAmount}, {testOrderBookApi.Result.BidTop}");
+            Console.WriteLine("Список ордеров на покупку:");
+            foreach (var i in testOrderBookApi.Result.Ask)
+            {
+                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+            }
+            Console.WriteLine("Список ордеров на продажу:");
+            foreach (var i in testOrderBookApi.Result.Bid)
+            {
+                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+            }
+
             Console.ReadLine();
 
         }

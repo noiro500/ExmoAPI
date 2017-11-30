@@ -20,7 +20,8 @@ namespace ExmoAPI
         private string _secret; 
         private string _url = "http://api.exmo.com/v1/{0}";
 
-        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}&limit={2}";
+        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}";
+        private string _urlPublicAPIwithLimit= "https://api.exmo.com/v1/{0}/?pair={1}&limit={2}";
 
         static ExmoApi()
         {
@@ -33,7 +34,7 @@ namespace ExmoAPI
             _secret = secret;
         }
 
-        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples=null, int limit=10)
+        public async Task<string> ApiQueryAsync(string apiName, IDictionary<string, string> req, string tradeCouples=null, int? limit=null)
         {
             using (var client = new HttpClient())
             {
@@ -47,11 +48,21 @@ namespace ExmoAPI
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
                 HttpResponseMessage response;
-                string uuu = string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString());
-                if (tradeCouples != null)
-                    response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString()));
+                //string uuu = string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString());
+                if (limit == null)
+                {
+                    if (tradeCouples != null)
+                        response = await client.GetAsync(string.Format(_urlPublicAPI, apiName, tradeCouples));
+                    else
+                        response = await client.PostAsync(string.Format(_url, apiName), content);
+                }
                 else
-                    response = await client.PostAsync(string.Format(_url, apiName), content);
+                {
+                    if (tradeCouples != null)
+                        response = await client.GetAsync(string.Format(_urlPublicAPIwithLimit, apiName, tradeCouples, limit.ToString()));
+                    else
+                        response = await client.PostAsync(string.Format(_url, apiName), content);
+                }
                 return await response.Content.ReadAsStringAsync();
             }
         }

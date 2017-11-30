@@ -13,25 +13,25 @@ namespace ExmoAPI.Generic
         public IList<T> ResultList { get; private set; } = null;
         public T Result { get; private set; } = default(T);
 
-        private async Task<IList<T>> GetResultList(string method, ExmoApi api, string tradeCouples, int limit)
+        private async Task<IList<T>> GetResultList(string method, ExmoApi api, string tradeCouples, int? limit=null)
         {
-            var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples);
+            var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
             //var objQuery = JObject.Parse(jsonQuery.Result.ToString());
             var objQuery = JObject.Parse(jsonQuery.ToString());
             var objResult = JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString());
-            return ResultList =objResult.ToList();
+            return  ResultList =objResult.ToList();
         }
 
-        public async Task<T> GetResult(string method, ExmoApi api, string tradeCouples)
+        public async Task<T> GetResult(string method, ExmoApi api, string tradeCouples, int? limit = null)
         {
             if (method == "trades")
             {
-                //ResultList = await GetResultList(method, api, currentPair);
-                Task resulTask = GetResultList(method, api, tradeCouples);
+                //ResultList = await GetResultList(method, api, tradeCouples, limit);
+                Task resulTask = GetResultList(method, api, tradeCouples, limit);
                 resulTask.Wait();
                 return default(T);
             }
-            var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples);
+            var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
             var objQuery = JObject.Parse(jsonQuery.ToString());
             var objResult = JsonConvert.DeserializeObject<T>(objQuery[tradeCouples].ToString());
             return Result = objResult;
