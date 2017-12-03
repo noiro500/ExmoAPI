@@ -22,8 +22,7 @@ namespace ExmoTest
     {
         static void Main(string[] args)
         {
-            var api = new ExmoApi("", "");
-            string tradeCouples = "LTC_RUB";
+
 
 
 
@@ -196,18 +195,23 @@ namespace ExmoTest
             /********Example********/
             /***********************/
 
+            string apiName;
+            var api = new ExmoApi("", "");
+            string tradeCouples = "LTC_RUB";
+            int? limit = 10;
             /*Public API*/
 
-
+            
             ///<summary>trades
             /// <remarks>Список сделок по валютной паре</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
-            ///<returns>ResultList type=IList</returns>
+            ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
             IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
-            testTradesApi.GetResult("trades", api, tradeCouples, 2);
+            testTradesApi.GetResult("trades", api, tradeCouples, limit);
             
+            Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
             foreach (var tmp in testTradesApi.ResultList)
             {
                 Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
@@ -215,26 +219,37 @@ namespace ExmoTest
 
             ///<summary>order_book
             /// <remarks>Книга ордеров по валютной паре</remarks>
-            /// <param name="pair">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
-            ///<returns>ResultList type=IList</returns>
+            ///<returns>Result type=COrderBook></returns>
             /// </summary>
             IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
-            var a =testOrderBookApi.GetResult("order_book", api, tradeCouples, 10);
+            var orderBookResult= testOrderBookApi.GetResult("order_book", api, tradeCouples, limit);
+            Console.WriteLine("\nКнига ордеров по валютной паре:");
+            Console.WriteLine($"{orderBookResult.Result.AskQuantity} {orderBookResult.Result.AskAmount} {orderBookResult.Result.AskTop}, {orderBookResult.Result.BidQuantity}, " +
+                              $"{orderBookResult.Result.BidAmount}, {orderBookResult.Result.BidTop}");
+            Console.WriteLine("\nСписок ордеров на покупку:");
+            foreach (var i in orderBookResult.Result.Ask)
+            {
+                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+            }
+            Console.WriteLine("\nСписок ордеров на продажу:");
+            foreach (var i in orderBookResult.Result.Bid)
+            {
+                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+            }
             
-            Console.WriteLine("Книга ордеров по валютной паре:");
-            Console.WriteLine($"{a.Result.AskQuantity} {a.Result.AskAmount} {a.Result.AskTop}, {a.Result.BidQuantity}," +
-                              $"{testOrderBookApi.Result.BidAmount}, {testOrderBookApi.Result.BidTop}");
-            Console.WriteLine("Список ордеров на покупку:");
-            foreach (var i in testOrderBookApi.Result.Ask)
-            {
-                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
-            }
-            Console.WriteLine("Список ордеров на продажу:");
-            foreach (var i in testOrderBookApi.Result.Bid)
-            {
-                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
-            }
+            ///<summary>ticker
+            /// <remarks>Cтатистика цен и объемов торгов по валютным парам</remarks>
+            ///<returns>Result type=CTicker</returns>
+            /// </summary>
+            IHelperPublicAPI<CTicker> testTickerApi=new CHelperPublicAPI<CTicker>();
+            var tickerResult = testTickerApi.GetResult("ticket", api, tradeCouples);
+            Console.WriteLine($"\nCтатистика цен и объемов торгов по валютной паре {tradeCouples}:");
+            Console.WriteLine($"{tickerResult.Result.High}, {tickerResult.Result.Low}, {tickerResult.Result.Avg}, " +
+                              $"{tickerResult.Result.Vol}, {tickerResult.Result.VolCurr}, {tickerResult.Result.LastTrade}, " +
+                              $"{tickerResult.Result.BuyPrice}, {tickerResult.Result.SellPrice}, " +
+                              $"{(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tickerResult.Result.Updated)}");
 
             Console.ReadLine();
 

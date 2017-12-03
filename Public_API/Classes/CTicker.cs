@@ -22,6 +22,6 @@ namespace ExmoAPI.Public_API.Classes
         [JsonProperty("vol_curr")]
         public decimal VolCurr { get  ; private set  ; }
         [JsonProperty("updated")]
-        public decimal Updated { get  ; private set  ; }
+        public double Updated { get  ; private set  ; }
     }
 }

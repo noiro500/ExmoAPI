@@ -11,6 +11,6 @@
         decimal Avg { get; }
         decimal Vol { get; }
         decimal VolCurr { get; }
-        decimal Updated { get;  }
+        double Updated { get;  }
     }
 }

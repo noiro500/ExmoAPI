@@ -104,7 +104,7 @@ namespace ExmoAPI
             }
         }
 
-        public string ApiQuery(string apiName, IDictionary<string,string> req, string tradeCouples = null)
+        public string ApiQuery(string apiName, IDictionary<string,string> req, string tradeCouples = null, int? limit = null)
         {
             using (var wb = new WebClient())
             {
@@ -117,8 +117,25 @@ namespace ExmoAPI
                 wb.Headers.Add("Key", _key);
 
                 var data = req.ToNameValueCollection();
-
-                var response = wb.UploadValues(string.Format(_url, apiName), "POST", data);
+                //var response = wb.UploadValues(string.Format(_url, apiName), "POST", data);
+                byte[] response;
+                if (limit == null)
+                {
+                    if (tradeCouples != null)
+                    {
+                        string tmp = string.Format(_urlPublicAPI, apiName, tradeCouples);
+                        response = wb.UploadValues(tmp, "POST", data);
+                    }
+                    else
+                        response = wb.UploadValues(string.Format(_url, apiName), "POST", data);
+                }
+                else
+                {
+                    if (tradeCouples != null)
+                        response = wb.UploadValues(string.Format(_urlPublicAPIwithLimit, apiName, tradeCouples, limit.ToString()), "POST", data);
+                    else
+                        response = wb.UploadValues(string.Format(_url, apiName), "POST", data);
+                }
                 return Encoding.UTF8.GetString(response);
             }
         }

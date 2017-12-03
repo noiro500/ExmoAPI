@@ -22,7 +22,7 @@ namespace ExmoAPI.Generic
             return  ResultList =objResult.ToList();
         }
 
-        public async Task<T> GetResult(string method, ExmoApi api, string tradeCouples, int? limit = null)
+        public async Task<T> GetResult(string method, ExmoApi api, string tradeCouples="BTC_USD", int? limit = null)
         {
             if (method == "trades")
             {
@@ -30,6 +30,7 @@ namespace ExmoAPI.Generic
                 Task resulTask = GetResultList(method, api, tradeCouples, limit);
                 resulTask.Wait();
                 return default(T);
+
             }
             var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
             var objQuery = JObject.Parse(jsonQuery.ToString());
