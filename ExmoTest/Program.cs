@@ -213,7 +213,7 @@ namespace ExmoTest
             
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
             
-            foreach (var tmp in testTradesApi.ResultList)
+            /*foreach (var tmp in testTradesApi.ResultList)
             {
                 Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
             }
