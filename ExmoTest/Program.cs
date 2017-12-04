@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using ExmoAPI;
 using ExmoAPI.Authenticated_API.Classes;
 using ExmoAPI.Generic;
 using ExmoAPI.Public_API.Classes;
-using ExmoAPI.Public_API.Interfaces;
 
 #pragma warning disable 1587
 
