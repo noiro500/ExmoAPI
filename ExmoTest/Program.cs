@@ -271,7 +271,7 @@ namespace ExmoTest
             /// <remarks>Cписок валют биржи</remarks>
             ///<returns>Result type=IList<string>></returns>
             /// </summary>
-            Task currencyTask = CCurrency.GetCurrency(api);
+            Task currencyTask = CCurrency.GetCurrencyAsync(api);
             currencyTask.Wait();
             Console.WriteLine("\nCписок валют биржи:");
             foreach (var i in CCurrency.CurrencyList)
@@ -283,7 +283,7 @@ namespace ExmoTest
             /// <remarks>Cписок валютных пар (не входит в ExmoApi)</remarks>
             ///<returns>Result type=IList<string>></returns>
             /// </summary>
-            Task currencyPairTaskTask = CCurrency.GetCurrencyPairList(api);
+            Task currencyPairTaskTask = CCurrency.GetCurrencyPairListAsync(api);
             currencyPairTaskTask.Wait();
             Console.WriteLine("\nCписок валютных пар биржи:");
             foreach (var i in CCurrency.CurrencyPairList)
