@@ -199,8 +199,8 @@ namespace ExmoTest
             var api = new ExmoApi("", "");
             string tradeCouples = "LTC_RUB";
             int? limit = 10;
-            /*Public API*/
 
+            /*Public API*/
             
             ///<summary>trades
             /// <remarks>Список сделок по валютной паре</remarks>
@@ -209,15 +209,15 @@ namespace ExmoTest
             ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
             IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
-           testTradesApi.GetResultAsync("trades", api, tradeCouples, limit);
-            
+            Task testTradesApiResult= testTradesApi.GetResultAsync("trades", api, tradeCouples, limit);
+            testTradesApiResult.Wait();
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
             
-            /*foreach (var tmp in testTradesApi.ResultList)
+            foreach (var tmp in testTradesApi.ResultList)
             {
                 Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
             }
-            /*
+            
             ///<summary>order_book
             /// <remarks>Книга ордеров по валютной паре</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
@@ -225,17 +225,18 @@ namespace ExmoTest
             ///<returns>Result type=COrderBook></returns>
             /// </summary>
             IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
-            var orderBookResult= testOrderBookApi.GetResultAsync("order_book", api, tradeCouples, limit);
+            Task testOrderBookApiTask=  testOrderBookApi.GetResultAsync("order_book", api, tradeCouples, limit);
+            testOrderBookApiTask.Wait();
             Console.WriteLine("\nКнига ордеров по валютной паре:");
-            Console.WriteLine($"{orderBookResult.Result.AskQuantity} {orderBookResult.Result.AskAmount} {orderBookResult.Result.AskTop}, {orderBookResult.Result.BidQuantity}, " +
-                              $"{orderBookResult.Result.BidAmount}, {orderBookResult.Result.BidTop}");
+            Console.WriteLine($"{testOrderBookApi.ResultMetod.AskQuantity} {testOrderBookApi.ResultMetod.AskAmount} {testOrderBookApi.ResultMetod.AskTop}, {testOrderBookApi.ResultMetod.BidQuantity}, " +
+                              $"{testOrderBookApi.ResultMetod.BidAmount}, {testOrderBookApi.ResultMetod.BidTop}");
             Console.WriteLine("\nСписок ордеров на покупку:");
-            foreach (var i in orderBookResult.Result.Ask)
+            foreach (var i in testOrderBookApi.ResultMetod.Ask)
             {
                 Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
             }
             Console.WriteLine("\nСписок ордеров на продажу:");
-            foreach (var i in orderBookResult.Result.Bid)
+            foreach (var i in testOrderBookApi.ResultMetod.Bid)
             {
                 Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
             }
@@ -245,13 +246,50 @@ namespace ExmoTest
             ///<returns>Result type=CTicker</returns>
             /// </summary>
             IHelperPublicAPI<CTicker> testTickerApi=new CHelperPublicAPI<CTicker>();
-            var tickerResult = testTickerApi.GetResultAsync("ticket", api, tradeCouples);
+            Task testTickerApiTask = testTickerApi.GetResultAsync("ticker", api, tradeCouples);
+            testTickerApiTask.Wait();
             Console.WriteLine($"\nCтатистика цен и объемов торгов по валютной паре {tradeCouples}:");
-            Console.WriteLine($"{tickerResult.Result.High}, {tickerResult.Result.Low}, {tickerResult.Result.Avg}, " +
-                              $"{tickerResult.Result.Vol}, {tickerResult.Result.VolCurr}, {tickerResult.Result.LastTrade}, " +
-                              $"{tickerResult.Result.BuyPrice}, {tickerResult.Result.SellPrice}, " +
-                              $"{(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tickerResult.Result.Updated)}");
-            */
+            Console.WriteLine($"{testTickerApi.ResultMetod.High}, {testTickerApi.ResultMetod.Low}, {testTickerApi.ResultMetod.Avg}, " +
+                              $"{testTickerApi.ResultMetod.Vol}, {testTickerApi.ResultMetod.VolCurr}, {testTickerApi.ResultMetod.LastTrade}, " +
+                              $"{testTickerApi.ResultMetod.BuyPrice}, {testTickerApi.ResultMetod.SellPrice}, " +
+                              $"{(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(testTickerApi.ResultMetod.Updated)}");
+
+            ///<summary>pair_settings
+            /// <remarks>Настройки валютных пар</remarks>
+            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
+            ///<returns>Result type=CPairSettings></returns>
+            /// </summary>
+            IHelperPublicAPI<CPairSettings> testPairSettingApi=new CHelperPublicAPI<CPairSettings>();
+            Task testPairSettingApiTask = testPairSettingApi.GetResultAsync("pair_settings", api, tradeCouples);
+            testPairSettingApiTask.Wait();
+            Console.WriteLine($"\nНастройки валютной пары {tradeCouples}:");
+            Console.WriteLine($"{testPairSettingApi.ResultMetod.MinQuantity}, {testPairSettingApi.ResultMetod.MaxQuantity} " +
+                              $"{testPairSettingApi.ResultMetod.MinPrice}, {testPairSettingApi.ResultMetod.MaxPrice}, " +
+                              $"{testPairSettingApi.ResultMetod.MinAmount}, {testPairSettingApi.ResultMetod.MaxAmount}");
+
+            ///<summary>currency
+            /// <remarks>Cписок валют биржи</remarks>
+            ///<returns>Result type=IList<string>></returns>
+            /// </summary>
+            Task currencyTask = CCurrency.GetCurrency(api);
+            currencyTask.Wait();
+            Console.WriteLine("\nCписок валют биржи:");
+            foreach (var i in CCurrency.CurrencyList)
+            {
+                Console.WriteLine(i);
+            }
+
+            //<summary>currencyPair
+            /// <remarks>Cписок валютных пар (не входит в ExmoApi)</remarks>
+            ///<returns>Result type=IList<string>></returns>
+            /// </summary>
+            Task currencyPairTaskTask = CCurrency.GetCurrencyPairList(api);
+            currencyPairTaskTask.Wait();
+            Console.WriteLine("\nCписок валютных пар биржи:");
+            foreach (var i in CCurrency.CurrencyPairList)
+            {
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
 
         }

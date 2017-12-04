@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace ExmoAPI
+namespace ExmoAPI.Generic
 {
     public class ExmoApi
     {
@@ -48,7 +48,6 @@ namespace ExmoAPI
                 content.Headers.Add("Sign", sign);
                 content.Headers.Add("Key", _key);
                 HttpResponseMessage response;
-                //string uuu = string.Format(_urlPublicAPI, apiName, tradeCouples, limit.ToString());
                 if (limit == null)
                 {
                     if (tradeCouples != null)

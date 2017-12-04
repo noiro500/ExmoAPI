@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using ExmoAPI.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace ExmoAPI.Public_API.Classes
@@ -8,14 +10,14 @@ namespace ExmoAPI.Public_API.Classes
     //Cписок валют биржи
     public static class CCurrency
     {
-        public static List<string> CurrencyList { get; private set; }
-        public static List<string> CurrencyPairList { get; private set; }
+        public static IList<string> CurrencyList { get; private set; }
+        public static IList<string> CurrencyPairList { get; private set; }
 
         //Получить имеющиеся валюты на бирже
-        public static IList<string> GetCurrency(ExmoApi api)
+        public static async Task<IList<string>> GetCurrency(ExmoApi api)
         {
-            var jsonCurrency = api.ApiQueryAsync("currency", new Dictionary<string, string>());
-            var parserStrings = jsonCurrency.Result.ToString()
+            var jsonCurrency = await api.ApiQueryAsync("currency", new Dictionary<string, string>());
+            var parserStrings = jsonCurrency.ToString()
                 .Replace("[", "")
                 .Replace("]", "")
                 .Replace("\"", "")
@@ -24,10 +26,10 @@ namespace ExmoAPI.Public_API.Classes
         }
 
         //Получить имеющиеся валютные пары
-        public static IList<string> GetCurrencyPairList(ExmoApi api)
+        public static async Task<IList<string>> GetCurrencyPairList(ExmoApi api)
         {
-            var jsonPairSettings = api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
-            var objPairSettings = JObject.Parse(jsonPairSettings.Result.ToString());
+            var jsonPairSettings =await api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
+            var objPairSettings = JObject.Parse(jsonPairSettings.ToString());
             var tempReplace = objPairSettings.ToString()
                 .Replace("{", "")
                 .Replace("}", "")

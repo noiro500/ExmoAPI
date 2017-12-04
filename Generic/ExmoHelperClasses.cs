@@ -11,27 +11,10 @@ namespace ExmoAPI.Generic
     public class CHelperPublicAPI<T> : IHelperPublicAPI<T>
     {
         public IList<T> ResultList { get; private set; } = null;
-        public T Result { get; private set; } = default(T);
-
-        /*private async Task GetResultListAsync(string method, ExmoApi api, string tradeCouples, int? limit=null)
-        {
-            var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
-            //var objQuery = JObject.Parse(jsonQuery.Result.ToString());
-            var objQuery = JObject.Parse(jsonQuery.ToString());
-            var objResult = JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString());
-            ResultList =objResult.ToList();
-        }*/
+        public T ResultMetod { get; private set; } = default(T);
 
         public async Task GetResultAsync(string method, ExmoApi api, string tradeCouples="BTC_USD", int? limit = null)
         {
-            /*if (method == "trades")
-            {
-                await GetResultListAsync(method, api, tradeCouples, limit);
-                /*Task resulTask = GetResultList(method, api, tradeCouples, limit);
-                resulTask.Wait();
-                return default(T);
-
-            }*/
             var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
             var objQuery = JObject.Parse(jsonQuery.ToString());
             if (method == "trades")
@@ -39,9 +22,7 @@ namespace ExmoAPI.Generic
                 ResultList = (JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString())).ToList();
             }
             else
-                Result = JsonConvert.DeserializeObject<T>(objQuery[tradeCouples].ToString());
-            //Result = objResult;
-
+                ResultMetod = JsonConvert.DeserializeObject<T>(objQuery[tradeCouples].ToString());
         }
     }
 

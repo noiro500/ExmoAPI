@@ -6,7 +6,7 @@ namespace ExmoAPI.Generic
     public interface IHelperPublicAPI<T>
     {
         IList<T> ResultList { get; }
-        T Result { get; }
+        T ResultMetod { get; }
         Task GetResultAsync(string method, ExmoApi api, string tradeCouples=null, int? limit=null);
     }
 
