@@ -18,11 +18,11 @@ namespace ExmoAPI.Generic
             var jsonQuery = await api.ApiQueryAsync(method, new Dictionary<string, string>(), tradeCouples, limit);
             var objQuery = JObject.Parse(jsonQuery.ToString());
             if (method == "trades")
-            {
                 ResultList = (JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString())).ToList();
-            }
+            
             else
                 ResultMetod = JsonConvert.DeserializeObject<T>(objQuery[tradeCouples].ToString());
+                
         }
     }
 
