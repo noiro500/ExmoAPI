@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using ExmoAPI.Authenticated_API.Classes;
 using ExmoAPI.Generic;
 using ExmoAPI.Public_API.Classes;
+using System.Linq;
 
 #pragma warning disable 1587
 
@@ -188,7 +191,7 @@ namespace ExmoTest
             string apiName;
             var api = new ExmoApi("", "");
             string tradeCouples = "LTC_RUB";
-            int? limit = 10;
+            int? limit = 1000;
 
             /*Public API*/
             
@@ -202,19 +205,52 @@ namespace ExmoTest
             Task testTradesApiResult= testTradesApi.GetResultAsync("trades", api, tradeCouples, limit);
             testTradesApiResult.Wait();
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
-            
-            foreach (var tmp in testTradesApi.ResultList)
+
+            /*foreach (var tmp in testTradesApi.ResultList)
             {
                 Console.WriteLine($"{tmp.TradeId} {tmp.Type} {tmp.Price} {tmp.Quantity} {tmp.Amount} {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(tmp.Date)}");
+            }*/
+            using (StreamWriter text = new StreamWriter(@"C:\tmp\test", false))
+            {
+                
+                /*foreach (var tmp in testTradesApi.ResultList.Reverse())
+                {
+                    text.WriteLine(tmp.Price);
+                    // $"{tmp.Price};{tmp.Date}");
+                }*/
+                decimal openPrice, minPrace, maxPrice, closePrice;
+                int j = 0;
+                int t = 1;
+                List<decimal> tempList=new List<decimal>();
+                foreach (var i in testTradesApi.ResultList.Reverse())
+                {
+                    if (j < 10)
+                    {
+                        tempList.Add(i.Price);
+                        j++;
+                        continue;
+                    }
+                    else
+                    {
+                        openPrice = tempList[0];
+                        minPrace = tempList.Min();
+                        maxPrice = tempList.Max();
+                        closePrice = tempList[tempList.Count-1];
+                        text.WriteLine($"{t};{openPrice};{minPrace};{maxPrice};{closePrice}");
+                        tempList.Clear();
+                        t++;
+                        j = 0;
+                    }
+                }                
             }
-            
+
             ///<summary>order_book
             /// <remarks>Книга ордеров по валютной паре</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
             ///<returns>Result type=COrderBook></returns>
             /// </summary>
-            IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
+            IHelperPublicAPI<COrderBook> testOrderBookApi = new CHelperPublicAPI<COrderBook>();
             Task testOrderBookApiTask=  testOrderBookApi.GetResultAsync("order_book", api, tradeCouples, limit);
             testOrderBookApiTask.Wait();
             Console.WriteLine("\nКнига ордеров по валютной паре:");
