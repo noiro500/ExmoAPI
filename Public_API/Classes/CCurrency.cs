@@ -16,6 +16,7 @@ namespace ExmoAPI.Public_API.Classes
         //Получить имеющиеся валюты на бирже
         public static async Task<IList<string>> GetCurrencyAsync(ExmoApi api)
         {
+            api = api ?? (new ExmoApi("", ""));
             var jsonCurrency = await api.ApiQueryAsync("currency", new Dictionary<string, string>());
             var parserStrings = jsonCurrency.ToString()
                 .Replace("[", "")
@@ -28,6 +29,7 @@ namespace ExmoAPI.Public_API.Classes
         //Получить имеющиеся валютные пары
         public static async Task<IList<string>> GetCurrencyPairListAsync(ExmoApi api)
         {
+            api = api ?? (new ExmoApi("", ""));
             var jsonPairSettings =await api.ApiQueryAsync("pair_settings", new Dictionary<string, string>());
             var objPairSettings = JObject.Parse(jsonPairSettings.ToString());
             var tempReplace = objPairSettings.ToString()
