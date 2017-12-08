@@ -4,7 +4,7 @@
     public interface IUserTrades
     {
         decimal TradeId { get;}
-        decimal Date { get;}
+        ulong  Date { get;}
         string Type { get; }
         string Pair { get; }
         decimal OrderId { get; }
