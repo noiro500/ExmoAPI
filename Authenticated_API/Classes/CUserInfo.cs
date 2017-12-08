@@ -10,7 +10,7 @@ namespace ExmoAPI.Authenticated_API.Classes
         [JsonProperty("uid")]
         public int Uid { get;private set;}
         [JsonProperty("server_date")]
-        public int ServerDate { get;private set;}
+        public ulong ServerDate { get;private set;}
         [JsonProperty("balances")]
         public Balances Balances { get;private set;}
         [JsonProperty("reserved")]

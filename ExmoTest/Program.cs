@@ -198,7 +198,7 @@ namespace ExmoTest
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
             ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
-            IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
+            IHelperPublicAPI<CTrades> testTradesApi=new CHelperPublicAPI<CTrades>();
             testTradesApi.GetResultAsync("trades", null, tradeCouples, limit).Wait();
             //testTradesApiResult.Wait();
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");

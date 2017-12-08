@@ -7,7 +7,7 @@ namespace ExmoAPI.Authenticated_API.Classes
     public class CUserCancelledOrders : IUserCancelledOrders
     {
         [JsonProperty("date")]
-        public decimal Date {get;private set;}
+        public ulong Date {get;private set;}
         [JsonProperty("order_id")]
         public decimal OrderId {get;private set;}
         [JsonProperty("order_type")]
