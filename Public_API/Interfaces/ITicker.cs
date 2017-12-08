@@ -11,6 +11,6 @@
         decimal Avg { get; }
         decimal Vol { get; }
         decimal VolCurr { get; }
-        double Updated { get;  }
+        ulong Updated { get;  }
     }
 }
