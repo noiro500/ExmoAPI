@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using ExmoAPI.Authenticated_API.Classes;
 using ExmoAPI.Generic;
@@ -10,15 +12,8 @@ namespace ExmoTest
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-
-
-
-
-
-
-
             #region Authenticated_API
             /*
             #region user_info
@@ -185,13 +180,15 @@ namespace ExmoTest
             /********Example********/
             /***********************/
 
+
+
+            /*Public API*/
+
             string apiName;
-            var apiKey = new ExmoApi("", "S-");
+            var apiKey = new ExmoApi("K-", "S-");
             string tradeCouples = "LTC_RUB";
             int? limit = 10;
 
-            /*Public API*/
-            
             ///<summary>trades
             /// <remarks>Список сделок по валютной паре</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
@@ -199,7 +196,7 @@ namespace ExmoTest
             ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
             IHelperPublicAPI<CTrades> testTradesApi=new CHelperPublicAPI<CTrades>();
-            testTradesApi.GetResultAsync("trades", null, tradeCouples, limit).Wait();
+            await testTradesApi.GetResultAsync("trades", null, tradeCouples, limit);
             //testTradesApiResult.Wait();
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
             
@@ -212,10 +209,10 @@ namespace ExmoTest
             /// <remarks>Книга ордеров по валютной паре</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
-            ///<returns>Result type=COrderBook></returns>
+            ///<returns>ResultMethod type=COrderBook></returns>
             /// </summary>
             IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
-            testOrderBookApi.GetResultAsync("order_book", null, tradeCouples, limit).Wait();
+            await testOrderBookApi.GetResultAsync("order_book", null, tradeCouples, limit);
             //testOrderBookApiTask.Wait();
             Console.WriteLine("\nКнига ордеров по валютной паре:");
             Console.WriteLine($"{testOrderBookApi.ResultMetod.AskQuantity} {testOrderBookApi.ResultMetod.AskAmount} {testOrderBookApi.ResultMetod.AskTop}, {testOrderBookApi.ResultMetod.BidQuantity}, " +
@@ -233,10 +230,10 @@ namespace ExmoTest
             
             ///<summary>ticker
             /// <remarks>Cтатистика цен и объемов торгов по валютным парам</remarks>
-            ///<returns>Result type=CTicker</returns>
+            ///<returns>ResultMethod type=CTicker</returns>
             /// </summary>
             IHelperPublicAPI<CTicker> testTickerApi=new CHelperPublicAPI<CTicker>();
-            testTickerApi.GetResultAsync("ticker", null, tradeCouples).Wait();
+            await testTickerApi.GetResultAsync("ticker", null, tradeCouples);
             //testTickerApiTask.Wait();
             Console.WriteLine($"\nCтатистика цен и объемов торгов по валютной паре {tradeCouples}:");
             Console.WriteLine($"{testTickerApi.ResultMetod.High}, {testTickerApi.ResultMetod.Low}, {testTickerApi.ResultMetod.Avg}, " +
@@ -247,10 +244,10 @@ namespace ExmoTest
             ///<summary>pair_settings
             /// <remarks>Настройки валютных пар</remarks>
             /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
-            ///<returns>Result type=CPairSettings></returns>
+            ///<returns>ResultMethod type=CPairSettings></returns>
             /// </summary>
             IHelperPublicAPI<CPairSettings> testPairSettingApi=new CHelperPublicAPI<CPairSettings>();
-            testPairSettingApi.GetResultAsync("pair_settings", null, tradeCouples).Wait();
+            await testPairSettingApi.GetResultAsync("pair_settings", null, tradeCouples);
             //testPairSettingApiTask.Wait();
             Console.WriteLine($"\nНастройки валютной пары {tradeCouples}:");
             Console.WriteLine($"{testPairSettingApi.ResultMetod.MinQuantity}, {testPairSettingApi.ResultMetod.MaxQuantity} " +
@@ -259,9 +256,9 @@ namespace ExmoTest
 
             ///<summary>currency
             /// <remarks>Cписок валют биржи</remarks>
-            ///<returns>Result type=IList<string>></returns>
+            ///<returns>CurrencyList type=IList<string>></returns>
             /// </summary>
-            CCurrency.GetCurrencyAsync(null).Wait();
+            await CCurrency.GetCurrencyAsync(null);
             //currencyTask.Wait();
             Console.WriteLine("\nCписок валют биржи:");
             foreach (var i in CCurrency.CurrencyList)
@@ -271,9 +268,9 @@ namespace ExmoTest
 
             //<summary>currencyPair
             /// <remarks>Cписок валютных пар (не входит в ExmoApi)</remarks>
-            ///<returns>Result type=IList<string>></returns>
+            ///<returns>CurrencyPairList type=IList<string>></returns>
             /// </summary>
-            CCurrency.GetCurrencyPairListAsync(null).Wait();
+            await CCurrency.GetCurrencyPairListAsync(null);
             //currencyPairTaskTask.Wait();
             Console.WriteLine("\nCписок валютных пар биржи:");
             foreach (var i in CCurrency.CurrencyPairList)
@@ -284,15 +281,77 @@ namespace ExmoTest
 
             /*Authenticated  API*/
 
+            apiKey = new ExmoApi("K-", "S-");
+            tradeCouples = "ETC_USD";
+            limit = 10;
+            decimal quantity = 0.2M; //BTC
+            decimal price = 10M; //Для продажи BTC
+            string type = "buy";
+
             ///<summary>user_info
             /// <remarks>Получение информации об аккаунте пользователя</remarks>
-            /// <param name="api">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
-            ///<returns>ResultList type=CTrade ></returns>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            ///<returns>ResultMethod type=CUserInfo ></returns>
             /// </summary>
             IHelperAuthAPI<CUserInfo> testUserInfoApi=new CHelperAuthAPI<CUserInfo>();
-            testUserInfoApi.GetResultAsync("user_info", apiKey).Wait();
-            Console.ReadLine();
+            await testUserInfoApi.GetResultAsync("user_info", apiKey);
+            Console.WriteLine("\nИнформация об аккаунте пользователя");
+            Console.WriteLine($"{testUserInfoApi.ResultMetod.Uid} {testUserInfoApi.ResultMetod.ServerDate}");
+            //Проход по свойствам класса Balances
+            Console.WriteLine("\nБаланс:");
+            foreach (var propInfo in testUserInfoApi.ResultMetod.Balances.GetType().GetProperties())
+                Console.WriteLine($"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Balances, null)}");
+            //Проход по свойствам класса Reserved
+            Console.WriteLine($"\nВ ордерах:");
+            foreach (var propInfo in testUserInfoApi.ResultMetod.Reserved.GetType().GetProperties())
+                Console.WriteLine($"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Reserved, null)}");
 
+            ///<summary>order_create
+            /// <remarks>Создание ордера</remarks>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
+            ///         tradeCouples - валютная пара
+            ///         quantity - кол-во по ордеру
+            ///         price - цена по ордеру
+            ///         type - тип ордера, может принимать следующие значения:
+            ///             buy - ордер на покупку
+            ///             sell - ордер на продажу
+            ///             market_buy - ордера на покупку по рынку 
+            ///             market_sell - ордер на продажу по рынку 
+            ///             market_buy_total - ордер на покупку по рынку на определенную сумму
+            ///             market_sell_total - ордер на продажу по рынку на определенную сумму</param> 
+            /// <param name="tradeCouples">Валютная пара</param> 
+            ///<returns>ResultMethod type=COrderCreate ></returns>
+            /// </summary>
+            IHelperAuthAPI<COrderCreate> testOrderCreateApi=new CHelperAuthAPI<COrderCreate>();
+            await testOrderCreateApi.GetResultAsync("order_create", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"pair", tradeCouples.ToString(CultureInfo.InvariantCulture)},
+                    {"quantity", quantity.ToString(CultureInfo.InvariantCulture)},
+                    {"price", price.ToString(CultureInfo.InvariantCulture)},
+                    {"type", type}
+
+                }, tradeCouples);
+            Console.WriteLine("\nСоздание ордера:");
+            if (testOrderCreateApi.ResultMetod.Result)
+                Console.WriteLine($"\nОрдер создан:" +
+                                  $"\nПара: {tradeCouples}" +  
+                                  $"\norder_id: {testOrderCreateApi.ResultMetod.OrderId}" +
+                                  $"\nОперация: {type}" +
+                                  $"\nЦена: {price}" +
+                                  $"\nКоличество: {quantity}" +
+                                  $"\nСумма: {price*quantity}");
+
+            else
+            {
+                Console.WriteLine($"\nОрдкр не создан!!!" +
+                                  $"\nОшибка: {testOrderCreateApi.ResultMetod.Error}");
+            }
+
+
+
+            Console.ReadLine();
         }
         
     }
