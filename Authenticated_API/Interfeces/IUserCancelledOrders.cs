@@ -3,7 +3,7 @@
     //Получение отмененных ордеров пользователя
     public interface IUserCancelledOrders
     {
-        decimal Date { get;}
+        ulong Date { get;}
         decimal OrderId { get; }
         string OrderType { get; }
         string Pair { get; }
