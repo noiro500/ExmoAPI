@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
+using System.Web.Hosting;
+using ExmoAPI.Public_API.Classes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -58,12 +60,30 @@ namespace ExmoAPI.Generic
                 ResultList = JsonConvert.DeserializeObject<T[]>(objQuery.ToString());
                 //ResultList = objResultArray.ToList();
             }
-            if (method == "user_open_orders" || method == "user_trades" /*|| method == "user_cancelled_orders"*/)
+            if (method == "user_trades" /*|| method == "user_cancelled_orders"*/)
             {
+
                 ResultList = JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString());
                 //ResultList = objResult.ToList();
                 //await GetResultList(method, api, dic, tradeCouples);
                 //return ResultMetod; 
+            }
+
+            if (method == "user_open_orders")
+            {
+                IList<T> result=new List<T>(); 
+                await CCurrency.GetCurrencyPairListAsync(null);
+                foreach (var c in CCurrency.CurrencyPairList)
+                {
+                    if (objQuery.ToString().Contains(c))
+                    {
+                        IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[c].ToString());
+                        foreach (var tmp in tempList)
+                            result.Add(tmp);
+                    }
+                }
+
+                ResultList = result;
             }
             else
             {
