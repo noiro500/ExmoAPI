@@ -281,12 +281,12 @@ namespace ExmoTest
 
             /*Authenticated  API*/
 
-            apiKey = new ExmoApi("K-", "S-");
-            tradeCouples = "ETC_USD";
+            apiKey = new ExmoApi("K-8c47d660270aa621e18647d2302eadaf53bccdf2", "S-6331d06d316e61fddb41ce2073f4cbbd4c9eada2");
+            tradeCouples = "BTC_USD";
             limit = 10;
-            decimal quantity = 0.2M; //BTC
-            decimal price = 10M; //Для продажи BTC
-            string type = "buy";
+            decimal quantity = 0.001M; //BTC
+            decimal price = 20000M; //Для продажи BTC
+            string type = "sell";
 
             ///<summary>user_info
             /// <remarks>Получение информации об аккаунте пользователя</remarks>
@@ -342,15 +342,48 @@ namespace ExmoTest
                                   $"\nЦена: {price}" +
                                   $"\nКоличество: {quantity}" +
                                   $"\nСумма: {price*quantity}");
-
             else
             {
-                Console.WriteLine($"\nОрдкр не создан!!!" +
+                Console.WriteLine($"\nОрдер не создан!!!" +
                                   $"\nОшибка: {testOrderCreateApi.ResultMetod.Error}");
             }
 
+            var orderId = testOrderCreateApi.ResultMetod.OrderId;
+
+            //<summary>order_cancel
+            /// <remarks>Отмена ордера</remarks>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
+            ///         order_id -  идентификатор ордера </param> 
+            ///<returns>ResultMethod type=COrderCancel ></returns>
+            /// </summary>
+            IHelperAuthAPI<COrderCancel> testOrderCancelApi=new CHelperAuthAPI<COrderCancel>();
+            await testOrderCancelApi.GetResultAsync("order_cancel", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"order_id", orderId.ToString(CultureInfo.InvariantCulture)}
+                });
+            Console.WriteLine($"\nОтмена ордера {orderId}:");
+            if(testOrderCancelApi.ResultMetod.Result)
+                Console.WriteLine($"\nОрдер c номером {orderId} - отменен.");
+            else
+            {
+                Console.WriteLine($"\nОрдер не отменен!!!" +
+                                  $"\nОшибка: {testOrderCancelApi.ResultMetod.Error}");
+            }
 
 
+            //<summary>user_open_orders
+            /// <remarks>Отмена ордера</remarks>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            ///<returns>ResultMethod type=CUserOpenOrders ></returns>
+            /// </summary>
+            IHelperAuthAPI<CUserOpenOrders> testUserOpenOrdersApi=new CHelperAuthAPI<CUserOpenOrders>();
+            await testUserOpenOrdersApi.GetResultAsync("user_open_orders", apiKey);
+            foreach (var res in testUserOpenOrdersApi.ResultList)
+            {
+                
+            }
             Console.ReadLine();
         }
         
