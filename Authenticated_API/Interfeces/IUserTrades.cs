@@ -6,7 +6,7 @@
         decimal TradeId { get;}
         ulong  Date { get;}
         string Type { get; }
-        string Pair { get; }
+        string TradeCouples { get; }
         decimal OrderId { get; }
         decimal Quantity { get; }
         decimal Price { get; }

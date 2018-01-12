@@ -382,7 +382,14 @@ namespace ExmoTest
             await testUserOpenOrdersApi.GetResultAsync("user_open_orders", apiKey);
             foreach (var res in testUserOpenOrdersApi.ResultList)
             {
-                
+                Console.WriteLine($"\nСписок открытых ордеров пользователя:" +
+                                  $"\nВалютная пара: {res.TradeCouples}"+
+                                  $"\nOrder_id: {res.OrderId}"+
+                                  $"\nСоздан: {(new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(res.CreatedTime)}"+
+                                  $"\nТип: {res.Type}"+
+                                  $"\nЦена: {res.Price}"+
+                                  $"\nКоличество: {res.Quantity}"+
+                                  $"\nСумма: {res.Amount}");
             }
             Console.ReadLine();
         }
