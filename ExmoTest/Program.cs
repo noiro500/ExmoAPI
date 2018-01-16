@@ -281,7 +281,7 @@ namespace ExmoTest
 
             /*Authenticated  API*/
 
-            apiKey = new ExmoApi("K-8c47d660270aa621e18647d2302eadaf53bccdf2", "S-6331d06d316e61fddb41ce2073f4cbbd4c9eada2");
+            apiKey = new ExmoApi("K-", "S-");
             tradeCouples = "BTC_USD";
             limit = 10;
             decimal quantity = 0.001M; //BTC
