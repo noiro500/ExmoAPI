@@ -7,13 +7,13 @@ namespace ExmoAPI.Authenticated_API.Classes
     public class CUserCancelledOrders : IUserCancelledOrders
     {
         [JsonProperty("date")]
-        public decimal Date {get;private set;}
+        public ulong Date {get;private set;}
         [JsonProperty("order_id")]
         public decimal OrderId {get;private set;}
         [JsonProperty("order_type")]
         public string OrderType {get;private set;}
         [JsonProperty("pair")]
-        public string Pair {get;private set;}
+        public string TradeCouples { get;private set;}
         [JsonProperty("price")]
         public decimal Price {get;private set;}
         [JsonProperty("quantity")]

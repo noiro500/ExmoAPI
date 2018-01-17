@@ -4,9 +4,9 @@
     public interface IUserOpenOrders
     {
         decimal OrderId { get;}
-        decimal Created { get;}
+        ulong CreatedTime { get;}
         string Type { get;}
-        string Pair { get;}
+        string TradeCouples { get;}
         decimal Price { get;}
         decimal Quantity { get;}
         decimal Amount { get;}

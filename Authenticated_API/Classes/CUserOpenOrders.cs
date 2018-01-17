@@ -8,11 +8,11 @@ namespace ExmoAPI.Authenticated_API.Classes
         [JsonProperty("order_id")]
         public decimal OrderId{get;private set;}
         [JsonProperty("created")]
-        public decimal Created{get;private set;}
+        public ulong CreatedTime{get;private set;}
         [JsonProperty("type")]
         public string Type{get;private set;}
         [JsonProperty("pair")]
-        public string Pair{get;private set;}
+        public string TradeCouples { get;private set;}
         [JsonProperty("price")]
         public decimal Price{get;private set;}
         [JsonProperty("quantity")]

@@ -17,9 +17,9 @@ namespace ExmoAPI.Authenticated_API.Interfeces
     public interface ITrade
     {
         decimal TradeId { get;}
-        double Date { get;}
+        ulong Date { get;}
         string Type { get;}
-        string Pair { get;}
+        string TradeCouples { get;}
         decimal OrderId { get;}
         decimal Quantity { get;}
         decimal Price { get;}
