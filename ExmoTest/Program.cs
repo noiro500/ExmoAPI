@@ -22,8 +22,8 @@ namespace ExmoTest
 
             string apiName;
             var api = new ExmoApi("", "");
-            string tradeCouples = "LTC_RUB";
-            int? limit = 1000;
+            string tradeCouples = "ETC_USD";
+            int? limit = 6000;
 
             /*Public API*/
             
@@ -33,7 +33,7 @@ namespace ExmoTest
             /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
             ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
-            IHelperPublicAPI<CTrade> testTradesApi=new CHelperPublicAPI<CTrade>();
+            IHelperPublicAPI<CTrades> testTradesApi=new CHelperPublicAPI<CTrades>();
             Task testTradesApiResult= testTradesApi.GetResultAsync("trades", api, tradeCouples, limit);
             testTradesApiResult.Wait();
             Console.WriteLine($"Список сделок по валютной паре {tradeCouples}:");
@@ -54,9 +54,12 @@ namespace ExmoTest
                 int j = 0;
                 int t = 1;
                 List<decimal> tempList=new List<decimal>();
-                foreach (var i in testTradesApi.ResultList.Reverse())
+                ulong firstTime = testTradesApi.ResultList[(testTradesApi.ResultList).Count - 1].Date;
+                ulong lastTime = testTradesApi.ResultList[0].Date;
+                Console.WriteLine($"1000 результатов берется за {lastTime-firstTime}");
+                /*foreach (var i in testTradesApi.ResultList.Reverse())
                 {
-                    if (j < 10)
+                    if (j < 54)
                     {
                         tempList.Add(i.Price);
                         j++;
@@ -73,7 +76,10 @@ namespace ExmoTest
                         t++;
                         j = 0;
                     }
-                }                
+                    
+                    
+                }  */    
+                text.Close();
             }
 
             ///<summary>order_book
@@ -94,11 +100,14 @@ namespace ExmoTest
                 Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
             }
             Console.WriteLine("\nСписок ордеров на продажу:");
-            foreach (var i in testOrderBookApi.ResultMetod.Bid)
+            using (StreamWriter text = new StreamWriter(@"C:\tmp\test", false))
             {
-                Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+                foreach (var i in testOrderBookApi.ResultMetod.Bid)
+                {
+                    Console.WriteLine($"{i[0]}, {i[1]}, {i[2]}");
+                }
             }
-            
+
             ///<summary>ticker
             /// <remarks>Cтатистика цен и объемов торгов по валютным парам</remarks>
             ///<returns>Result type=CTicker</returns>
