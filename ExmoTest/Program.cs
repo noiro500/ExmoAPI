@@ -229,8 +229,54 @@ namespace ExmoTest
                                   $"\nКоличество: {res.Quantity}"+
                                   $"\nСумма: {res.Amount}");
             }
+            //<summary>user_trades
+            /// <remarks>Получение сделок пользователя</remarks>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
+            ///         tradeCouples - одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)
+            ///         limit - кол-во возвращаемых сделок (по умолчанию 100, максимум 10 000)
+            ///         offset - смещение от последней сделки (по умолчанию 0)</param> 
+            ///<returns>ResultMethod type=CUserTrades ></returns>
+            /// </summary>
+            IHelperAuthAPI<CUserTrades> testUserTradesApi=new CHelperAuthAPI<CUserTrades>();
+            await testUserTradesApi.GetResultAsync("user_trades", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"pair", "ETC_USD, BTC_USD"},
+                    {"limit", "100" },
+                    {"offset", "0" }
+                });
+            Console.WriteLine("\nСделки пользователя:");
+            foreach (var uT in testUserTradesApi.ResultList)
+            {
+                Console.WriteLine($"\nВалютная пара: {uT.TradeCouples}" +
+                                  $"\ntrade_id: {uT.TradeId}" +
+                                  $"\ndate : {uT.Date}"+
+                                  $"\ntype : {uT.Type}" +
+                                  $"\norder_id: {uT.OrderId}" +
+                                  $"\nquantity : {uT.Quantity}" +
+                                  $"\nprice : {uT.Price}" +
+                                  $"\namount : {uT.Amount}" );
+            }
+
+            //<summary>user_cancelled_orders
+            /// <remarks>Получение отмененных ордеров пользователя</remarks>
+            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
+            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
+            ///         limit - кол-во возвращаемых сделок (по умолчанию 100, максимум 10 000)
+            ///         offset - смещение от последней сделки (по умолчанию 0)</param> 
+            ///<returns>ResultMethod type=CUserTrades ></returns>
+            /// </summary>
+            IHelperAuthAPI<CUserCancelledOrders> testUserCansOrdersApi=new CHelperAuthAPI<CUserCancelledOrders>();
+            await testUserCansOrdersApi.GetResultAsync("user_cancelled_orders", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"limit", "10"},
+                    {"offset", "0"}
+                });
+
             Console.ReadLine();
         }
-        
+
     }
 }

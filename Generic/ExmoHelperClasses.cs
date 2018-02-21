@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Web.Hosting;
+using System.Web.Management;
 using ExmoAPI.Public_API.Classes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -34,39 +35,23 @@ namespace ExmoAPI.Generic
         public IList<T> ResultList { get; private set; } = null;
 
         public T ResultMetod { get; private set; } = default(T);
-
-        /*private async Task GetResultList(string method, ExmoApi api, Dictionary<string, string> dic, string tradeCouples)
-        {
-            var jsonQuery = await api.ApiQueryAsync(method, dic);
-            if (method == "user_cancelled_orders")
-            {
-                var objQueryArray = JArray.Parse(jsonQuery.ToString());
-                var objResultArray = JsonConvert.DeserializeObject<T[]>(objQueryArray.ToString());
-                ResultList = objResultArray.ToList();
-            }
-            var objQuery = JObject.Parse(jsonQuery.ToString());
-            var objResult = JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString());
-            ResultList = objResult.ToList();
-        }*/
-
+        
         public async Task GetResultAsync(string method, ExmoApi api, Dictionary<string, string> dic = null, string tradeCouples = "BTC_USD")
         {
             if (dic == null)
                 dic=new Dictionary<string, string>();
-            var jsonQuery = await api.ApiQueryAsync(method, dic);
-            var objQuery = JObject.Parse(jsonQuery.ToString());
-            if (method == "user_cancelled_orders")
+            string jsonQuery = default;
+            JObject objQuery = default;
+
+            if (method != "user_trades")
+            {
+                jsonQuery = await api.ApiQueryAsync(method, dic);
+                objQuery = JObject.Parse(jsonQuery.ToString());
+            }
+
+            if (method == "user_cancelled_orders" )
             {
                 ResultList = JsonConvert.DeserializeObject<T[]>(objQuery.ToString());
-                //ResultList = objResultArray.ToList();
-            }
-            if (method == "user_trades" /*|| method == "user_cancelled_orders"*/)
-            {
-
-                ResultList = JsonConvert.DeserializeObject<T[]>(objQuery[tradeCouples].ToString());
-                //ResultList = objResult.ToList();
-                //await GetResultList(method, api, dic, tradeCouples);
-                //return ResultMetod; 
             }
 
             if (method == "user_open_orders")
@@ -81,6 +66,25 @@ namespace ExmoAPI.Generic
                         foreach (var tmp in tempList)
                             result.Add(tmp);
                     }
+                }
+
+                ResultList = result;
+            }
+
+            if (method == "user_trades")
+            {
+                List<T> result = new List<T>();
+                tradeCouples = dic["pair"];
+                tradeCouples = tradeCouples.Replace(" ", string.Empty).Trim().Replace(" ", string.Empty);
+                string[] pairs = tradeCouples.Split(',');
+                foreach (var p in pairs)
+                {
+                    dic["pair"] = p;
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    objQuery = JObject.Parse(jsonQuery.ToString());
+                    IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[p].ToString());
+                    result.AddRange(tempList);
+                    dic.Remove("nonce");
                 }
 
                 ResultList = result;
