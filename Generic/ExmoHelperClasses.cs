@@ -47,6 +47,7 @@ namespace ExmoAPI.Generic
             {
                 jsonQuery = await api.ApiQueryAsync(method, dic);
                 objQuery = JObject.Parse(jsonQuery.ToString());
+                
             }
 
             if (method == "user_cancelled_orders" )

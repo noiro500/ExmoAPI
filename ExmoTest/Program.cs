@@ -126,7 +126,7 @@ namespace ExmoTest
             decimal price = 20000M; //Для продажи BTC
             string type = "sell";
 
-            ///<summary>user_info
+          /*  ///<summary>user_info
             /// <remarks>Получение информации об аккаунте пользователя</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
             ///<returns>ResultMethod type=CUserInfo ></returns>
@@ -258,7 +258,7 @@ namespace ExmoTest
                                   $"\nprice : {uT.Price}" +
                                   $"\namount : {uT.Amount}" );
             }
-
+            */
             //<summary>user_cancelled_orders
             /// <remarks>Получение отмененных ордеров пользователя</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
