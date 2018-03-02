@@ -47,15 +47,15 @@ namespace ExmoAPI.Generic
             switch (method)
             {
                 case "user_info":
-                    await HelperMethod(method, api, dic);
+                    await AssistingMethod(method, api, dic);
                     return;
 
                 case "order_create":
-                    await HelperMethod(method, api, dic);
+                    await AssistingMethod(method, api, dic);
                     return;
 
                 case "order_cancel":
-                    await HelperMethod(method, api, dic);
+                    await AssistingMethod(method, api, dic);
                     return;
 
                 case "user_open_orders":
@@ -123,7 +123,7 @@ namespace ExmoAPI.Generic
 
         }
 
-        private async Task HelperMethod(string method, ExmoApi api, Dictionary<string, string> dic)
+        private async Task AssistingMethod(string method, ExmoApi api, Dictionary<string, string> dic)
         {
             string jsonQuery;
             JObject objQuery;
