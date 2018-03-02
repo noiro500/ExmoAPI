@@ -106,14 +106,13 @@ namespace ExmoAPI.Generic
 #if DEBUG
 
 
-            if (method != "user_trades")
-            {
+            
                 jsonQuery = await api.ApiQueryAsync(method, dic);
                 //JArray ttt=JArray.Parse(jsonQuery);
                 objQuery = JObject.Parse(jsonQuery.ToString());
                 
-            }
-
+            
+    
             
                 //var jsonQuery = await api.ApiQueryAsync(method, dic);
                 //var objQuery = JObject.Parse(jsonQuery.ToString());
