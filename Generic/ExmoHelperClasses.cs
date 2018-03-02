@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Web.Hosting;
@@ -43,60 +44,89 @@ namespace ExmoAPI.Generic
             string jsonQuery = default;
             JObject objQuery = default;
 
+            switch (method)
+            {
+                case "user_info":
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    objQuery = JObject.Parse(jsonQuery.ToString());
+                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    return;
+
+                case "order_create":
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    objQuery = JObject.Parse(jsonQuery.ToString());
+                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    return;
+
+                case "order_cancel":
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    objQuery = JObject.Parse(jsonQuery.ToString());
+                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    return;
+
+                case "user_open_orders":
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    objQuery = JObject.Parse(jsonQuery.ToString());
+                    IList<T> resultUserOpenOrders = new List<T>();
+                    await CCurrency.GetCurrencyPairListAsync(null);
+                    foreach (var c in CCurrency.CurrencyPairList)
+                    {
+                        if (objQuery.ToString().Contains(c))
+                        {
+                            IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[c].ToString());
+                            foreach (var tmp in tempList)
+                                resultUserOpenOrders.Add(tmp);
+                        }
+                    }
+                    ResultList = resultUserOpenOrders;
+                    return;
+
+                case "user_trades":
+                    List<T> resultUserTrades = new List<T>();
+                    tradeCouples = dic["pair"];
+                    tradeCouples = tradeCouples.Replace(" ", string.Empty).Trim().Replace(" ", string.Empty);
+                    string[] pairs = tradeCouples.Split(',');
+                    foreach (var p in pairs)
+                    {
+                        dic["pair"] = p;
+                        jsonQuery = await api.ApiQueryAsync(method, dic);
+                        objQuery = JObject.Parse(jsonQuery.ToString());
+                        IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[p].ToString());
+                        resultUserTrades.AddRange(tempList);
+                        dic.Remove("nonce");
+                    }
+                    ResultList = resultUserTrades;
+                    return;
+
+                case "user_cancelled_orders":
+                    jsonQuery = await api.ApiQueryAsync(method, dic);
+                    var jarray = JArray.Parse(jsonQuery);
+                    ResultList = JsonConvert.DeserializeObject<T[]>(jarray.ToString());
+                    return;
+                default:
+                    //return;
+                    break;
+
+            }
+
+#if DEBUG
+
+
             if (method != "user_trades")
             {
                 jsonQuery = await api.ApiQueryAsync(method, dic);
+                //JArray ttt=JArray.Parse(jsonQuery);
                 objQuery = JObject.Parse(jsonQuery.ToString());
                 
             }
 
-            if (method == "user_cancelled_orders" )
-            {
-                ResultList = JsonConvert.DeserializeObject<T[]>(objQuery.ToString());
-            }
-
-            if (method == "user_open_orders")
-            {
-                IList<T> result=new List<T>(); 
-                await CCurrency.GetCurrencyPairListAsync(null);
-                foreach (var c in CCurrency.CurrencyPairList)
-                {
-                    if (objQuery.ToString().Contains(c))
-                    {
-                        IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[c].ToString());
-                        foreach (var tmp in tempList)
-                            result.Add(tmp);
-                    }
-                }
-
-                ResultList = result;
-            }
-
-            if (method == "user_trades")
-            {
-                List<T> result = new List<T>();
-                tradeCouples = dic["pair"];
-                tradeCouples = tradeCouples.Replace(" ", string.Empty).Trim().Replace(" ", string.Empty);
-                string[] pairs = tradeCouples.Split(',');
-                foreach (var p in pairs)
-                {
-                    dic["pair"] = p;
-                    jsonQuery = await api.ApiQueryAsync(method, dic);
-                    objQuery = JObject.Parse(jsonQuery.ToString());
-                    IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[p].ToString());
-                    result.AddRange(tempList);
-                    dic.Remove("nonce");
-                }
-
-                ResultList = result;
-            }
-            else
-            {
+            
                 //var jsonQuery = await api.ApiQueryAsync(method, dic);
                 //var objQuery = JObject.Parse(jsonQuery.ToString());
                 ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
-                //ResultMetod = objResult;
-            }
+            //ResultMetod = objResult;
+#endif
+
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ExmoTest
             /*Public API*/
 
             string apiName;
-            var apiKey = new ExmoApi("K-", "S-ш");
+            var apiKey = new ExmoApi("K", "S");
             string tradeCouples = "LTC_RUB";
             int? limit = 10;
 
@@ -119,14 +119,15 @@ namespace ExmoTest
 
             /*Authenticated  API*/
 
-            apiKey = new ExmoApi("K-", "S-");
+            apiKey = new ExmoApi("K", "S-");
             tradeCouples = "BTC_USD";
             limit = 10;
             decimal quantity = 0.001M; //BTC
             decimal price = 20000M; //Для продажи BTC
             string type = "sell";
 
-          /*  ///<summary>user_info
+            
+            ///<summary>user_info
             /// <remarks>Получение информации об аккаунте пользователя</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
             ///<returns>ResultMethod type=CUserInfo ></returns>
@@ -143,7 +144,7 @@ namespace ExmoTest
             Console.WriteLine($"\nВ ордерах:");
             foreach (var propInfo in testUserInfoApi.ResultMetod.Reserved.GetType().GetProperties())
                 Console.WriteLine($"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Reserved, null)}");
-
+            
             ///<summary>order_create
             /// <remarks>Создание ордера</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
@@ -187,7 +188,7 @@ namespace ExmoTest
             }
 
             var orderId = testOrderCreateApi.ResultMetod.OrderId;
-
+            
             //<summary>order_cancel
             /// <remarks>Отмена ордера</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
@@ -210,7 +211,7 @@ namespace ExmoTest
                                   $"\nОшибка: {testOrderCancelApi.ResultMetod.Error}");
             }
 
-
+            
             //<summary>user_open_orders
             /// <remarks>Отмена ордера</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
@@ -229,6 +230,7 @@ namespace ExmoTest
                                   $"\nКоличество: {res.Quantity}"+
                                   $"\nСумма: {res.Amount}");
             }
+
             //<summary>user_trades
             /// <remarks>Получение сделок пользователя</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
@@ -258,7 +260,7 @@ namespace ExmoTest
                                   $"\nprice : {uT.Price}" +
                                   $"\namount : {uT.Amount}" );
             }
-            */
+            
             //<summary>user_cancelled_orders
             /// <remarks>Получение отмененных ордеров пользователя</remarks>
             /// <param name="apiKey">Идентификатор пользователя на бирже</param>
@@ -274,7 +276,18 @@ namespace ExmoTest
                     {"limit", "10"},
                     {"offset", "0"}
                 });
-
+            
+            Console.WriteLine("\nОтмененные сделки пользователя:");
+            foreach (var canceledOrder in testUserTradesApi.ResultList)
+            {
+                Console.WriteLine($"\nВалютная пара: {canceledOrder.TradeCouples}" +
+                                  $"\ndate : {canceledOrder.Date}" +
+                                  $"\ntype : {canceledOrder.Type}" +
+                                  $"\norder_id: {canceledOrder.OrderId}" +
+                                  $"\nquantity : {canceledOrder.Quantity}" +
+                                  $"\nprice : {canceledOrder.Price}" +
+                                  $"\namount : {canceledOrder.Amount}");
+            }
             Console.ReadLine();
         }
 
