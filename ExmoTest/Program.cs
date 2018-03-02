@@ -24,7 +24,7 @@ namespace ExmoTest
             /*Public API*/
 
             string apiName;
-            var apiKey = new ExmoApi("K-", "S-");
+            var apiKey = new ExmoApi("K-", "S-ш");
             string tradeCouples = "LTC_RUB";
             int? limit = 10;
 
