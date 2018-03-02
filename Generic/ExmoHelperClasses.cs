@@ -47,21 +47,15 @@ namespace ExmoAPI.Generic
             switch (method)
             {
                 case "user_info":
-                    jsonQuery = await api.ApiQueryAsync(method, dic);
-                    objQuery = JObject.Parse(jsonQuery.ToString());
-                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    await HelperMethod(method, api, dic);
                     return;
 
                 case "order_create":
-                    jsonQuery = await api.ApiQueryAsync(method, dic);
-                    objQuery = JObject.Parse(jsonQuery.ToString());
-                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    await HelperMethod(method, api, dic);
                     return;
 
                 case "order_cancel":
-                    jsonQuery = await api.ApiQueryAsync(method, dic);
-                    objQuery = JObject.Parse(jsonQuery.ToString());
-                    ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
+                    await HelperMethod(method, api, dic);
                     return;
 
                 case "user_open_orders":
@@ -127,6 +121,15 @@ namespace ExmoAPI.Generic
             //ResultMetod = objResult;
 #endif
 
+        }
+
+        private async Task HelperMethod(string method, ExmoApi api, Dictionary<string, string> dic)
+        {
+            string jsonQuery;
+            JObject objQuery;
+            jsonQuery = await api.ApiQueryAsync(method, dic);
+            objQuery = JObject.Parse(jsonQuery.ToString());
+            ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
         }
     }
 }
