@@ -87,7 +87,6 @@ namespace ExmoAPI.Generic
                         objQuery = JObject.Parse(jsonQuery.ToString());
                         IList<T> tempList = JsonConvert.DeserializeObject<T[]>(objQuery[p].ToString());
                         resultUserTrades.AddRange(tempList);
-                        dic.Remove("nonce");
                     }
                     ResultList = resultUserTrades;
                     return;
@@ -124,8 +123,8 @@ namespace ExmoAPI.Generic
 
         private async Task AssistingMethod(string method, ExmoApi api, Dictionary<string, string> dic)
         {
-            string jsonQuery;
-            JObject objQuery;
+            string jsonQuery=null;
+            JObject objQuery=null;
             jsonQuery = await api.ApiQueryAsync(method, dic);
             objQuery = JObject.Parse(jsonQuery.ToString());
             ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());

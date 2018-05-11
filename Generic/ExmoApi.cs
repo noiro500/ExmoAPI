@@ -18,10 +18,10 @@ namespace ExmoAPI.Generic
         // API settings
         private string _key; 
         private string _secret; 
-        private string _url = "http://api.exmo.com/v1/{0}";
+        private string _url = "http://api.exmo.me/v1/{0}";
 
-        private string _urlPublicAPI = "https://api.exmo.com/v1/{0}/?pair={1}";
-        private string _urlPublicAPIwithLimit= "https://api.exmo.com/v1/{0}/?pair={1}&limit={2}";
+        private string _urlPublicAPI = "https://api.exmo.me/v1/{0}/?pair={1}";
+        private string _urlPublicAPIwithLimit= "https://api.exmo.me/v1/{0}/?pair={1}&limit={2}";
 
         static ExmoApi()
         {
@@ -62,6 +62,8 @@ namespace ExmoAPI.Generic
                     else
                         response = await client.PostAsync(string.Format(_url, apiName), content);
                 }
+
+                req.Remove("nonce");
                 return await response.Content.ReadAsStringAsync();
             }
         }

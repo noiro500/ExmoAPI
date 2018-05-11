@@ -23,16 +23,12 @@ namespace ExmoTest
 
             /*Public API*/
 
-            string apiName;
             var apiKey = new ExmoApi("K", "S");
             string tradeCouples = "LTC_RUB";
             int? limit = 10;
 
             ///<summary>trades
             /// <remarks>Список сделок по валютной паре</remarks>
-            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
-            /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
-            ///<returns>ResultList type=CTrade ></returns>
             /// </summary>
             IHelperPublicAPI<CTrades> testTradesApi=new CHelperPublicAPI<CTrades>();
             await testTradesApi.GetResultAsync("trades", null, tradeCouples, limit);
@@ -44,10 +40,7 @@ namespace ExmoTest
             }
             
             ///<summary>order_book
-            /// <remarks>Книга ордеров по валютной паре</remarks>
-            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
-            /// <param name="limit">кол-во отображаемых позиций (по умолчанию 100, максимум 1000)</param>
-            ///<returns>ResultMethod type=COrderBook></returns>
+            /// <remarks>Книга ордеров по валютной паре</remarks>>
             /// </summary>
             IHelperPublicAPI<COrderBook> testOrderBookApi=new CHelperPublicAPI<COrderBook>();
             await testOrderBookApi.GetResultAsync("order_book", null, tradeCouples, limit);
@@ -68,7 +61,6 @@ namespace ExmoTest
             
             ///<summary>ticker
             /// <remarks>Cтатистика цен и объемов торгов по валютным парам</remarks>
-            ///<returns>ResultMethod type=CTicker</returns>
             /// </summary>
             IHelperPublicAPI<CTicker> testTickerApi=new CHelperPublicAPI<CTicker>();
             await testTickerApi.GetResultAsync("ticker", null, tradeCouples);
@@ -81,8 +73,6 @@ namespace ExmoTest
 
             ///<summary>pair_settings
             /// <remarks>Настройки валютных пар</remarks>
-            /// <param name="tradeCouples">одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)</param>
-            ///<returns>ResultMethod type=CPairSettings></returns>
             /// </summary>
             IHelperPublicAPI<CPairSettings> testPairSettingApi=new CHelperPublicAPI<CPairSettings>();
             await testPairSettingApi.GetResultAsync("pair_settings", null, tradeCouples);
@@ -94,7 +84,6 @@ namespace ExmoTest
 
             ///<summary>currency
             /// <remarks>Cписок валют биржи</remarks>
-            ///<returns>CurrencyList type=IList<string>></returns>
             /// </summary>
             await CCurrency.GetCurrencyAsync(null);
             //currencyTask.Wait();
@@ -106,7 +95,6 @@ namespace ExmoTest
 
             //<summary>currencyPair
             /// <remarks>Cписок валютных пар (не входит в ExmoApi)</remarks>
-            ///<returns>CurrencyPairList type=IList<string>></returns>
             /// </summary>
             await CCurrency.GetCurrencyPairListAsync(null);
             //currencyPairTaskTask.Wait();
@@ -119,7 +107,7 @@ namespace ExmoTest
 
             /*Authenticated  API*/
 
-            apiKey = new ExmoApi("K", "S-");
+            
             tradeCouples = "BTC_USD";
             limit = 10;
             decimal quantity = 0.001M; //BTC
@@ -129,8 +117,6 @@ namespace ExmoTest
             
             ///<summary>user_info
             /// <remarks>Получение информации об аккаунте пользователя</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            ///<returns>ResultMethod type=CUserInfo ></returns>
             /// </summary>
             IHelperAuthAPI<CUserInfo> testUserInfoApi=new CHelperAuthAPI<CUserInfo>();
             await testUserInfoApi.GetResultAsync("user_info", apiKey);
@@ -147,20 +133,6 @@ namespace ExmoTest
             
             ///<summary>order_create
             /// <remarks>Создание ордера</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
-            ///         tradeCouples - валютная пара
-            ///         quantity - кол-во по ордеру
-            ///         price - цена по ордеру
-            ///         type - тип ордера, может принимать следующие значения:
-            ///             buy - ордер на покупку
-            ///             sell - ордер на продажу
-            ///             market_buy - ордера на покупку по рынку 
-            ///             market_sell - ордер на продажу по рынку 
-            ///             market_buy_total - ордер на покупку по рынку на определенную сумму
-            ///             market_sell_total - ордер на продажу по рынку на определенную сумму</param> 
-            /// <param name="tradeCouples">Валютная пара</param> 
-            ///<returns>ResultMethod type=COrderCreate ></returns>
             /// </summary>
             IHelperAuthAPI<COrderCreate> testOrderCreateApi=new CHelperAuthAPI<COrderCreate>();
             await testOrderCreateApi.GetResultAsync("order_create", apiKey,
@@ -189,33 +161,8 @@ namespace ExmoTest
 
             var orderId = testOrderCreateApi.ResultMetod.OrderId;
             
-            //<summary>order_cancel
-            /// <remarks>Отмена ордера</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
-            ///         order_id -  идентификатор ордера </param> 
-            ///<returns>ResultMethod type=COrderCancel ></returns>
-            /// </summary>
-            IHelperAuthAPI<COrderCancel> testOrderCancelApi=new CHelperAuthAPI<COrderCancel>();
-            await testOrderCancelApi.GetResultAsync("order_cancel", apiKey,
-                new Dictionary<string, string>()
-                {
-                    {"order_id", orderId.ToString(CultureInfo.InvariantCulture)}
-                });
-            Console.WriteLine($"\nОтмена ордера {orderId}:");
-            if(testOrderCancelApi.ResultMetod.Result)
-                Console.WriteLine($"\nОрдер c номером {orderId} - отменен.");
-            else
-            {
-                Console.WriteLine($"\nОрдер не отменен!!!" +
-                                  $"\nОшибка: {testOrderCancelApi.ResultMetod.Error}");
-            }
-
-            
             //<summary>user_open_orders
-            /// <remarks>Отмена ордера</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            ///<returns>ResultMethod type=CUserOpenOrders ></returns>
+            /// <remarks>Получение списока открытых ордеров пользователя</remarks>
             /// </summary>
             IHelperAuthAPI<CUserOpenOrders> testUserOpenOrdersApi=new CHelperAuthAPI<CUserOpenOrders>();
             await testUserOpenOrdersApi.GetResultAsync("user_open_orders", apiKey);
@@ -231,22 +178,34 @@ namespace ExmoTest
                                   $"\nСумма: {res.Amount}");
             }
 
+           /* ///<summary>order_cancel
+            /// <remarks>Отмена ордера</remarks>
+            /// </summary>
+            IHelperAuthAPI<COrderCancel> testOrderCancelApi = new CHelperAuthAPI<COrderCancel>();
+            await testOrderCancelApi.GetResultAsync("order_cancel", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"order_id", orderId.ToString(CultureInfo.InvariantCulture)}
+                });
+            Console.WriteLine($"\nОтмена ордера {orderId}:");
+            if (testOrderCancelApi.ResultMetod.Result)
+                Console.WriteLine($"\nОрдер c номером {orderId} - отменен.");
+            else
+            {
+                Console.WriteLine($"\nОрдер не отменен!!!" +
+                                  $"\nОшибка: {testOrderCancelApi.ResultMetod.Error}");
+            }
+            */
             //<summary>user_trades
             /// <remarks>Получение сделок пользователя</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
-            ///         tradeCouples - одна или несколько валютных пар разделенных запятой (пример BTC_USD,BTC_EUR)
-            ///         limit - кол-во возвращаемых сделок (по умолчанию 100, максимум 10 000)
-            ///         offset - смещение от последней сделки (по умолчанию 0)</param> 
-            ///<returns>ResultMethod type=CUserTrades ></returns>
             /// </summary>
             IHelperAuthAPI<CUserTrades> testUserTradesApi=new CHelperAuthAPI<CUserTrades>();
             await testUserTradesApi.GetResultAsync("user_trades", apiKey,
                 new Dictionary<string, string>()
                 {
                     {"pair", "ETC_USD, BTC_USD"},
-                    {"limit", "100" },
-                    {"offset", "0" }
+                    {"limit", "1000" },
+                    {"offset", "100" }
                 });
             Console.WriteLine("\nСделки пользователя:");
             foreach (var uT in testUserTradesApi.ResultList)
@@ -260,20 +219,15 @@ namespace ExmoTest
                                   $"\nprice : {uT.Price}" +
                                   $"\namount : {uT.Amount}" );
             }
-            
-            //<summary>user_cancelled_orders
+
+            ///<summary>user_cancelled_orders
             /// <remarks>Получение отмененных ордеров пользователя</remarks>
-            /// <param name="apiKey">Идентификатор пользователя на бирже</param>
-            /// <param name="Dictionary">Словарь, содержащий следующие параметры:
-            ///         limit - кол-во возвращаемых сделок (по умолчанию 100, максимум 10 000)
-            ///         offset - смещение от последней сделки (по умолчанию 0)</param> 
-            ///<returns>ResultMethod type=CUserTrades ></returns>
-            /// </summary>
+            ///</summary>
             IHelperAuthAPI<CUserCancelledOrders> testUserCansOrdersApi=new CHelperAuthAPI<CUserCancelledOrders>();
             await testUserCansOrdersApi.GetResultAsync("user_cancelled_orders", apiKey,
                 new Dictionary<string, string>()
                 {
-                    {"limit", "10"},
+                    {"limit", "100"},
                     {"offset", "0"}
                 });
             
@@ -288,6 +242,17 @@ namespace ExmoTest
                                   $"\nprice : {canceledOrder.Price}" +
                                   $"\namount : {canceledOrder.Amount}");
             }
+
+            ///<summary>order_trades
+            /// <remarks>Получение истории сделок ордера</remarks>
+            /// </summary>
+            IHelperAuthAPI<COrderTrades> testCOrderTradesApi=new CHelperAuthAPI<COrderTrades>();
+            await testCOrderTradesApi.GetResultAsync("order_trades", apiKey,
+                new Dictionary<string, string>()
+                {
+                    {"ordr_id", orderId.ToString(CultureInfo.InvariantCulture)}
+                });
+            Console.WriteLine($"История сделок ордера");
             Console.ReadLine();
         }
 
