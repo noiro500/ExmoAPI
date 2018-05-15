@@ -37,7 +37,7 @@ namespace ExmoAPI.Generic
 
         public T ResultMetod { get; private set; } = default(T);
         
-        public async Task GetResultAsync(string method, ExmoApi api, Dictionary<string, string> dic = null, string tradeCouples = "BTC_USD")
+        public async Task  GetResultAsync(string method, ExmoApi api, Dictionary<string, string> dic = null, string tradeCouples = "BTC_USD")
         {
             if (dic == null)
                 dic=new Dictionary<string, string>();
@@ -96,28 +96,15 @@ namespace ExmoAPI.Generic
                     var jarray = JArray.Parse(jsonQuery);
                     ResultList = JsonConvert.DeserializeObject<T[]>(jarray.ToString());
                     return;
+
+                case "order_trades":
+                    await AssistingMethod(method, api, dic);
+                    return;
                 default:
                     //return;
                     break;
 
             }
-
-#if DEBUG
-
-
-            
-                jsonQuery = await api.ApiQueryAsync(method, dic);
-                //JArray ttt=JArray.Parse(jsonQuery);
-                objQuery = JObject.Parse(jsonQuery.ToString());
-                
-            
-    
-            
-                //var jsonQuery = await api.ApiQueryAsync(method, dic);
-                //var objQuery = JObject.Parse(jsonQuery.ToString());
-                ResultMetod = JsonConvert.DeserializeObject<T>(objQuery.ToString());
-            //ResultMetod = objResult;
-#endif
 
         }
 
