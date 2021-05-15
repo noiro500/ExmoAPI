@@ -124,13 +124,26 @@ namespace ExmoTest
             Console.WriteLine($"{testUserInfoApi.ResultMetod.Uid} {testUserInfoApi.ResultMetod.ServerDate}");
             //Проход по свойствам класса Balances
             Console.WriteLine("\nБаланс:");
-            foreach (var propInfo in testUserInfoApi.ResultMetod.Balances.GetType().GetProperties())
-                Console.WriteLine($"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Balances, null)}");
+            if (testUserInfoApi.ResultMetod.Balances == null)
+                Console.WriteLine("Баланс равен 0.");
+            else
+            {
+                foreach (var propInfo in testUserInfoApi.ResultMetod.Balances.GetType().GetProperties())
+                    Console.WriteLine(
+                        $"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Balances, null)}");
+            }
+
             //Проход по свойствам класса Reserved
             Console.WriteLine($"\nВ ордерах:");
-            foreach (var propInfo in testUserInfoApi.ResultMetod.Reserved.GetType().GetProperties())
-                Console.WriteLine($"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Reserved, null)}");
-            
+            if(testUserInfoApi.ResultMetod.Reserved==null)
+                Console.WriteLine("Нет открытых ордеров.");
+            else
+            {
+                foreach (var propInfo in testUserInfoApi.ResultMetod.Reserved.GetType().GetProperties())
+                    Console.WriteLine(
+                        $"{propInfo.Name}: {propInfo.GetValue(testUserInfoApi.ResultMetod.Reserved, null)}");
+            }
+
             ///<summary>order_create
             /// <remarks>Создание ордера</remarks>
             /// </summary>
